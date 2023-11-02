@@ -1,2 +1,11 @@
-export class Distrito {
+export enum Distrito {
+  NORTE,
+  NORDESTE,
+  NOROESTE,
+  OESTE,
+  LESTE,
+  SUDESTE,
+  SUDOESTE,
+  SUL,
+  SERVICO_ESPECIALIZADO,
 }
