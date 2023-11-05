@@ -4,8 +4,8 @@ import { Distrito } from './enums/distrito';
 import { Solicitacao } from './solicitacao';
 import { Supervisor } from './supervisor';
 
-export class Ubs extends Abstract {
-  nomeUBS!: String;
+export class Equipamento extends Abstract {
+  nomeEquipamento!: String;
   gerente!: String;
   distrito!: Distrito;
   contatoList!: String[];

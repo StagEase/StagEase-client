@@ -3,10 +3,10 @@ import { Area } from './area';
 import { Situacao } from './enums/situacao';
 import { InstituicaoDeEnsino } from './instituicao-de-ensino';
 import { Supervisor } from './supervisor';
-import { Ubs } from './ubs';
+import { Equipamento } from './equipamento';
 
 export class Solicitacao extends Abstract {
-  ubs!: Ubs;
+  equipamento!: Equipamento;
   area!: Area;
   supervisor!: Supervisor;
   qntdEstagiarios!: number;
