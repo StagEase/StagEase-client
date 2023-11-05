@@ -6,8 +6,8 @@ import { Equipamento } from '../models/equipamento';
 @Injectable({
   providedIn: 'root',
 })
-export class UbsService {
-  private apiPath = '/instituicao/';
+export class EquipamentoService {
+  private apiPath = '/equipamento/';
 
   constructor(private axios: AxiosService) {}
 

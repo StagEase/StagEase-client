@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { SupervisorComponent } from './components/controle/supervisor/supervisor.component';
 import { InstituicaoComponent } from './components/controle/instituicao/instituicao.component';
 import { EquipamentoComponent } from './components/controle/equipamento/equipamento.component';
+import { HomeComponent } from './components/home/home.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { EquipamentoComponent } from './components/controle/equipamento/equipame
     SupervisorComponent,
     InstituicaoComponent,
     EquipamentoComponent,
+    HomeComponent,
+    FilterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [],

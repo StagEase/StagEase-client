@@ -5,6 +5,7 @@ import { AreaComponent } from './components/controle/area/area.component';
 import { SupervisorComponent } from './components/controle/supervisor/supervisor.component';
 import { InstituicaoComponent } from './components/controle/instituicao/instituicao.component';
 import { EquipamentoComponent } from './components/controle/equipamento/equipamento.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,12 @@ const routes: Routes = [
           { path: 'equipamento', component: EquipamentoComponent },
         ],
       },
+      {
+        path: 'inicio',
+        children: [
+          { path: 'solicitacao', component: HomeComponent }
+        ],
+      }
     ],
   },
 

@@ -1,0 +1,30 @@
+<div id="accordion" ngbAccordion >
+  <div ngbAccordionItem *ngFor="let solicitacao of solicitacaoList; index as i">
+    <h2 ngbAccordionHeader>
+      <button ngbAccordionButton>
+        <div class="accordion-header">
+          <div class="solicitacao">Solicitação {{ solicitacao.id }}</div>
+          <div class="equipamento">Equipamento {{ solicitacao.equipamento.nomeEquipamento }}</div>
+          <div class="situacao">Situação {{ solicitacao.situacao }}</div>
+          <div class="descricao">Descrição {{ solicitacao.descricao }}</div>
+        </div>
+      </button>
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <div class="container-content">
+            <div class="geral">
+              <div class="area-content">Area: {{ solicitacao.area.nomeArea }}</div>
+              <div class="supervisor-content">Supervisor: {{ solicitacao.supervisor.nomeSupervisor }}</div>
+              <div class="ie-content">IE: {{ solicitacao.instituicaoDeEnsino.nomeIe }}</div>
+              <div class="estagiarios-content">Estagiários: {{ solicitacao.qntdEstagiarios }}</div>
+              <div class="data-content">Data Início-Fim: {{ solicitacao.dataInicio }} ~ {{ solicitacao.dataFim }}</div>
+              <div class="expediente-content">Expediente Início-Fim: {{ solicitacao.inicioExpediente }} ~ {{ solicitacao.fimExpediente }}</div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
