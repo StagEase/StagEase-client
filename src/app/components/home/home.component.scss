@@ -2,3 +2,67 @@
   margin-left: 120px;
   margin-right: 90px;
 }
+
+.accordion-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.solicitacao-content {
+  font-weight: bold;
+  font-size: x-large;
+  padding-bottom: 10px;
+}
+
+.extra {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.situacao-content {
+  margin-right: 5%;
+}
+
+.situacao-content button {
+  font-weight: bolder;
+}
+
+.geral {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.datas {
+  margin-right: 5%;
+  text-align: center;
+}
+
+.geral div {
+  padding-top: 2px;
+}
+
+.extra span,
+.descricao-content span,
+.geral span {
+  font-weight: bold;
+}
+
+.ct {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin: 60px 90px 10px 110px;
+}
+
+.btn-create {
+  width: 100px;
+  height: 40px;
+}
