@@ -6,12 +6,11 @@ import { SupervisorComponent } from './components/controle/supervisor/supervisor
 import { InstituicaoComponent } from './components/controle/instituicao/instituicao.component';
 import { EquipamentoComponent } from './components/controle/equipamento/equipamento.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: IndexComponent,
     children: [
       {
         path: 'controle',
@@ -21,6 +20,10 @@ const routes: Routes = [
           { path: 'equipamento', component: EquipamentoComponent },
           { path: 'instituicao', component: InstituicaoComponent },
         ],
+      },
+      {
+        path: 'home',
+        component: HomeComponent,
       },
     ],
   },
