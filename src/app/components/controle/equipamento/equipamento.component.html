@@ -1,8 +1,65 @@
 <div class="area-container">
-  <div class="bg-style">
-    <button class="cad-btn">Novo Equipamento</button>
-    <div class="box-control">
-      <p>content here</p>
+  <div class="bg-table-style">
+    <button class="cadastrar-btn" (click)="openCreateModal(criarEquipamento)">
+      Cadastrar
+    </button>
+
+    <div class="table-container">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Gerente</th>
+            <th>Distrito</th>
+            <th>Contato</th>
+            <th>descricao</th>
+            <th>Opções</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let equipamento of list; let i = index">
+              <td>
+                {{ equipamento.id }}
+              </td>
+              <td>
+                {{ equipamento.nomeEquipamento }}
+              </td>
+              <td>
+                {{ equipamento.gerente }}
+              </td>
+              <td>
+                {{ equipamento.distrito }}
+              </td>
+              <td>
+                {{ equipamento.contatoList }}
+              </td>
+              <td>
+                {{ equipamento.descricao }}
+              </td>
+              <td class="option-td">
+                <button type="button" class="btn btn-warning">Editar</button>
+                <button type="button" class="btn btn-danger">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+
+<ng-template #criarEquipamento let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Novo equipamento</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-equipamento-modal></app-equipamento-modal>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>

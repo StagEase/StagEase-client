@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Area } from 'src/app/models/area';
 import { AreaService } from 'src/app/services/area.service';
@@ -9,6 +9,10 @@ import { AreaService } from 'src/app/services/area.service';
   styleUrls: ['./area.component.scss'],
 })
 export class AreaComponent {
+
+  @Output() retorno = new EventEmitter<Area>();
+  @Input() modoLancamento: boolean = false;
+  
   list: Area[] = [];
   areaSelecionada: Area = new Area();
 
@@ -36,4 +40,9 @@ export class AreaComponent {
 
     this.modal.open(modal, { size: 'lg' });
   }
+
+  lancamento(area: Area){
+    this.retorno.emit(area);
+  }
+  
 }

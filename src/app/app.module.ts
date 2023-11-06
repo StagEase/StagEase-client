@@ -18,6 +18,7 @@ import { AxiosService } from './services/axiosConfig/axios.service';
 import { AreaModalComponent } from './components/controle/area/area-modal/area-modal.component';
 import { InstituicaoModalComponent } from './components/controle/instituicao/instituicao-modal/instituicao-modal.component';
 import { SupervisorModalComponent } from './components/controle/supervisor/supervisor-modal/supervisor-modal.component';
+import { EquipamentoModalComponent } from './components/controle/equipamento/equipamento-modal/equipamento-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SupervisorModalComponent } from './components/controle/supervisor/super
     AreaModalComponent,
     InstituicaoModalComponent,
     SupervisorModalComponent,
+    EquipamentoModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [AxiosService],

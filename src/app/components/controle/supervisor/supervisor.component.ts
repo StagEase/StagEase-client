@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Supervisor } from 'src/app/models/supervisor';
 import { SupervisorService } from 'src/app/services/supervisor.service';
@@ -9,6 +9,9 @@ import { SupervisorService } from 'src/app/services/supervisor.service';
   styleUrls: ['./supervisor.component.scss']
 })
 export class SupervisorComponent {
+
+  @Output() retorno = new EventEmitter<Supervisor>();
+  @Input() modoLancamento: boolean = false;
 
   list: Supervisor[] = [];
   supervisorSelecionada: Supervisor = new Supervisor();
@@ -36,6 +39,10 @@ export class SupervisorComponent {
     this.supervisorSelecionada = new Supervisor();
 
     this.modal.open(modal, { size: 'lg' });
+  }
+
+  lancamento(supervisor: Supervisor){
+    this.retorno.emit(supervisor);
   }
 
 }
