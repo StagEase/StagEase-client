@@ -16,14 +16,15 @@ const routes: Routes = [
         path: 'controle',
         children: [
           { path: 'area', component: AreaComponent },
-          { path: 'ie', component: InstituicaoComponent },
           { path: 'supervisor', component: SupervisorComponent },
           { path: 'equipamento', component: EquipamentoComponent },
+          { path: 'instituicao', component: InstituicaoComponent },
         ],
       },
       {
-        path: 'home', component: HomeComponent
-      }
+        path: 'home',
+        component: HomeComponent,
+      },
     ],
   },
 

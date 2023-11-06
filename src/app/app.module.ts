@@ -7,7 +7,6 @@ import { IndexComponent } from './components/layout/index/index.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AreaComponent } from './components/controle/area/area.component';
-import { SelectComponent } from './components/select/select.component';
 import { FormsModule } from '@angular/forms';
 import { SupervisorComponent } from './components/controle/supervisor/supervisor.component';
 import { InstituicaoComponent } from './components/controle/instituicao/instituicao.component';
@@ -23,7 +22,6 @@ import { AxiosService } from './services/axiosConfig/axios.service';
     IndexComponent,
     SidebarComponent,
     AreaComponent,
-    SelectComponent,
     SupervisorComponent,
     InstituicaoComponent,
     EquipamentoComponent,

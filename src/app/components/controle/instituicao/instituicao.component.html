@@ -1,8 +1,7 @@
 <div class="area-container">
-  <app-select></app-select>
   <div class="bg-style">
     <button class="cad-btn">Nova Instituicao</button>
-    <div class="box-control" style="display: flex; flex-direction: column;">
+    <div class="box-control">
       <ng-container *ngIf="lista && lista.length > 0; else noContent">
         <table class="table table-bordered table-striped">
           <thead class="thead-dark">
@@ -14,7 +13,7 @@
           <tbody>
             <tr *ngFor="let instituicao of lista; let i = index">
               <td>{{ instituicao.id }}</td>
-              <td>{{ instituicao.nome }}</td>  
+              <td>{{ instituicao.nomeIe }}</td>
             </tr>
           </tbody>
         </table>
