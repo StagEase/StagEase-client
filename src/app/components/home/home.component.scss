@@ -15,13 +15,20 @@
   padding-bottom: 10px;
 }
 
-.extra {
+.extra-top {
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.extra-top,
+.extra-bottom {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.situacao-content {
+.situacao-content,
+.ativo-content {
   margin-right: 5%;
 }
 
@@ -36,7 +43,6 @@
 }
 
 .datas {
-  margin-right: 5%;
   text-align: center;
 }
 
@@ -44,10 +50,22 @@
   padding-top: 2px;
 }
 
-.extra span,
+.extra-top span,
+.extra-bottom span,
 .descricao-content span,
 .geral span {
   font-weight: bold;
+}
+
+.descricao-content,
+.ativo-content {
+  display: flex;
+  align-items: center;
+}
+
+.descricao-content p,
+.ativo-content p {
+  margin-left: 5px;
 }
 
 .ct {
@@ -67,4 +85,18 @@
   width: 100px;
   height: 40px;
   margin-right: 10px;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.btn-group-vertical {
+  gap: 10px;
+}
+
+.btn-group-vertical img {
+  width: 20px;
+  cursor: pointer;
 }

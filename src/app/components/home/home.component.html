@@ -1,5 +1,7 @@
 <div class="actions">
-  <button class="btn-create btn btn-primary">NOVO</button>
+  <button class="btn-create btn btn-primary">
+    <span style="font-weight: bolder">+ </span>NOVO
+  </button>
 </div>
 
 <div id="accordion" ngbAccordion>
@@ -11,7 +13,7 @@
             Solicitação #{{ solicitacao.id }}
           </div>
 
-          <div class="extra">
+          <div class="extra-top">
             <div class="equipamento-content">
               <span>Equipamento:</span>
               {{ solicitacao.equipamento.nomeEquipamento }}
@@ -20,7 +22,7 @@
               <span>Situação: </span>
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn btn-dark"
                 [ngStyle]="{
                   color: getCorComBaseNaSituacao(solicitacao.situacao)
                 }"
@@ -29,14 +31,29 @@
               </button>
             </div>
           </div>
-
-          <div class="descricao-content">
-            <span>Descrição:</span>
-            <p>
-              {{
-                solicitacao.descricao ? solicitacao.descricao : "Sem descrição"
-              }}
-            </p>
+          <div class="extra-bottom">
+            <div class="descricao-content">
+              <span>Descrição:</span>
+              <p>
+                {{
+                  solicitacao.descricao
+                    ? solicitacao.descricao
+                    : "Sem descrição"
+                }}
+              </p>
+            </div>
+            <div class="ativo-content">
+              <span>Status:</span>
+              <p>
+                <button
+                  type="button"
+                  class="btn"
+                  [ngClass]="solicitacao.ativo ? 'btn-success' : 'btn-danger'"
+                >
+                  {{ solicitacao.ativo ? "Ativo" : "Inativo" }}
+                </button>
+              </p>
+            </div>
           </div>
         </div>
       </button>
@@ -82,6 +99,10 @@
                   {{ solicitacao.inicioExpediente }} ~
                   {{ solicitacao.fimExpediente }}
                 </div>
+              </div>
+              <div class="btn-group-vertical" role="group">
+                <img src="../../../assets/icons/pencil-square.svg" alt="Editar" ngbTooltip="Editar">
+                <img src="../../../assets/icons/trash3-fill.svg" alt="Excluir" ngbTooltip="Excluir">
               </div>
             </div>
           </div>
