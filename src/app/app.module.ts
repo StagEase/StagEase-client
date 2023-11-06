@@ -17,6 +17,7 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { AxiosService } from './services/axiosConfig/axios.service';
 import { AreaModalComponent } from './components/controle/area/area-modal/area-modal.component';
 import { InstituicaoModalComponent } from './components/controle/instituicao/instituicao-modal/instituicao-modal.component';
+import { SupervisorModalComponent } from './components/controle/supervisor/supervisor-modal/supervisor-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { InstituicaoModalComponent } from './components/controle/instituicao/ins
     HeaderComponent,
     AreaModalComponent,
     InstituicaoModalComponent,
+    SupervisorModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [AxiosService],
