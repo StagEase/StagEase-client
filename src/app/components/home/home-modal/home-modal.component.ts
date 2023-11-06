@@ -22,7 +22,7 @@ export class HomeModalComponent {
   areas: Area[] = [];
   supervisores: Supervisor[] = [];
   instituicoes: InstituicaoDeEnsino[] = [];
-  situacoes = Situacao;
+  situacoes = Object.values(Situacao);
   situacaoSelected!: Situacao;
 
   //instanciando as services
@@ -50,7 +50,7 @@ export class HomeModalComponent {
       .catch((error) => {
         console.log(error);
       });
-    location.reload();
+    // location.reload();
   }
 
   getEquipamentos() {

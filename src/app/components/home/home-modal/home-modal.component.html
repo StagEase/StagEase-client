@@ -4,9 +4,9 @@
   </div>
   <div class="modal-content">
     <div class="form-group">
-      <label class="label-form" for="select_equipamento" class="label"
-        >Nome do Equipamento:</label
-      >
+      <label class="label-form" for="select_equipamento" class="label">
+        Nome do Equipamento:
+      </label>
       <select
         name="select_equipamento"
         class="label estilo"
@@ -19,9 +19,19 @@
           {{ equipamento.nomeEquipamento }}
         </option>
       </select>
-      <label class="label-form" for="select_area" class="label"
-        >Nome da Area:</label
-      >
+
+      <label class="label-form" for="input_qntdEstagiarios" class="label">
+        Quantidade de estagiários:
+      </label>
+      <input
+        type="number"
+        name="input_qntdEstagiarios"
+        [(ngModel)]="solicitacao.qntdEstagiarios"
+      />
+
+      <label class="label-form" for="select_area" class="label">
+        Nome da Área:
+      </label>
       <select
         name="select_area"
         class="label estilo"
@@ -32,9 +42,9 @@
         </option>
       </select>
 
-      <label class="label-form" for="select_supervisor" class="label"
-        >Nome do Supervisor:</label
-      >
+      <label class="label-form" for="select_supervisor" class="label">
+        Nome do Supervisor:
+      </label>
       <select
         name="select_supervisor"
         class="label estilo"
@@ -48,20 +58,61 @@
         </option>
       </select>
 
-      <label class="label-form" for="select_situacao" class="label"
-        >Situacão:</label
+      <label class="label-form" for="select_situacao" class="label">
+        Situação:
+      </label>
+      <select
+        name="select_situacao"
+        class="label estilo"
+        [(ngModel)]="situacaoSelected"
       >
-      <!-- <select name="select_situacao" class="label estilo" [(ngModel)]="situacaoSelected">
         <option *ngFor="let situacao of situacoes" [ngValue]="situacao">
           {{ situacao }}
         </option>
-      </select> -->
+      </select>
 
-      <div class="modal-footer">
-        <button id="modalBtn" class="btn btn-primary" (click)="save()">
-          Salvar
-        </button>
-      </div>
+      <label class="label-form" for="input_dataInicio" class="label">
+        Data de Início:
+      </label>
+      <input
+        type="date"
+        name="input_dataInicio"
+        [(ngModel)]="solicitacao.dataInicio"
+      />
+
+      <label class="label-form" for="input_dataFim" class="label">
+        Data de Fim:
+      </label>
+      <input
+        type="date"
+        name="input_dataFim"
+        [(ngModel)]="solicitacao.dataFim"
+      />
+
+      <label class="label-form" for="input_inicioExpediente" class="label">
+        Hora de Início do Expediente:
+      </label>
+      <input
+        type="time"
+        name="input_inicioExpediente"
+        [(ngModel)]="solicitacao.inicioExpediente"
+      />
+
+      <label class="label-form" for="input_fimExpediente" class="label">
+        Hora de Fim do Expediente:
+      </label>
+      <input
+        type="time"
+        name="input_fimExpediente"
+        [(ngModel)]="solicitacao.fimExpediente"
+      />
+
+      <div class="modal-footer"></div>
+    </div>
+    <div class="modal-footer">
+      <button id="modalBtn" class="btn btn-primary" (click)="save()">
+        Salvar
+      </button>
     </div>
   </div>
 </div>
