@@ -20,6 +20,7 @@ import { InstituicaoModalComponent } from './components/controle/instituicao/ins
 import { SupervisorModalComponent } from './components/controle/supervisor/supervisor-modal/supervisor-modal.component';
 import { EquipamentoModalComponent } from './components/controle/equipamento/equipamento-modal/equipamento-modal.component';
 import { HomeModalComponent } from './components/home/home-modal/home-modal.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HomeModalComponent } from './components/home/home-modal/home-modal.comp
     SupervisorModalComponent,
     EquipamentoModalComponent,
     HomeModalComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
