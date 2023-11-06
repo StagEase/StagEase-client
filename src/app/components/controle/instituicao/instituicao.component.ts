@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { InstituicaoDeEnsino } from 'src/app/models/instituicao-de-ensino';
 import { InstituicaoDeEnsinoService } from 'src/app/services/instituicao-de-ensino.service';
 
@@ -9,11 +9,17 @@ import { InstituicaoDeEnsinoService } from 'src/app/services/instituicao-de-ensi
   styleUrls: ['./instituicao.component.scss'],
 })
 export class InstituicaoComponent {
+  @Output() retorno = new EventEmitter<InstituicaoDeEnsino>();
+  @Input() modoLancamento: boolean = false;
+
+  objetoSelecionadoParaEdicao: InstituicaoDeEnsino = new InstituicaoDeEnsino();
+  indiceSelecionadoParaEdicao!: number;
   list: InstituicaoDeEnsino[] = [];
   instituicaoSelecionada: InstituicaoDeEnsino = new InstituicaoDeEnsino();
 
   service = inject(InstituicaoDeEnsinoService);
   modal = inject(NgbModal);
+  modalRef!: NgbModalRef;
 
   constructor() {
     this.listAll();
@@ -41,6 +47,18 @@ export class InstituicaoComponent {
     this.instituicaoSelecionada = instituicao;
     console.log('Equipamento selecionado:', this.instituicaoSelecionada);
     this.modal.open(modal, { size: 'lg' });
+  }
+
+  editar(modal: any, instituicao: InstituicaoDeEnsino, indice: number) {
+    this.objetoSelecionadoParaEdicao = { ...instituicao };
+    this.indiceSelecionadoParaEdicao = indice;
+
+    this.modalRef = this.modal.open(modal, { size: 'md' });
+  }
+
+  addOuEditarInstituicao(instituicao: InstituicaoDeEnsino) {
+    this.listAll();
+    this.modal.dismissAll();
   }
 
   deletarIE() {

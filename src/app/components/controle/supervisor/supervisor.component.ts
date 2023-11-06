@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Supervisor } from 'src/app/models/supervisor';
 import { SupervisorService } from 'src/app/services/supervisor.service';
 
@@ -14,8 +14,11 @@ export class SupervisorComponent {
 
   list: Supervisor[] = [];
   supervisorSelecionado: Supervisor = new Supervisor();
+  objetoSelecionadoParaEdicao: Supervisor = new Supervisor();
+  indiceSelecionadoParaEdicao!: number;
 
   service = inject(SupervisorService);
+  modalRef!: NgbModalRef;
   modal = inject(NgbModal);
 
   constructor() {
@@ -48,6 +51,17 @@ export class SupervisorComponent {
     this.supervisorSelecionado = supervisor;
     console.log('Equipamento selecionado:', this.supervisorSelecionado);
     this.modal.open(modal, { size: 'lg' });
+  }
+
+  editar(modal: any, supervisor: Supervisor, indice: number) {
+    this.objetoSelecionadoParaEdicao = { ...supervisor };
+    this.indiceSelecionadoParaEdicao = indice;
+
+    this.modalRef = this.modal.open(modal, { size: 'md' });
+  }
+  addOuEditarSupervisor(supervisor: Supervisor) {
+    this.listAll();
+    this.modal.dismissAll();
   }
 
   deletarSupervisor() {

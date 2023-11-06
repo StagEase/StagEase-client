@@ -21,7 +21,7 @@
                 {{ instituicao.nomeIe }}
               </td>
               <td class="option-td">
-                <button type="button" class="btn btn-warning">Editar</button>
+                <button type="button" class="btn btn-warning" (click)="editar(modal1, instituicao, i)">Editar</button>
                 <button
                   type="button"
                   class="btn btn-danger"
@@ -62,5 +62,18 @@
       Não
     </button>
     <button class="btn btn-danger" (click)="deletarIE()">Sim</button>
+  </div>
+</ng-template>
+
+<ng-template #modal1 let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title">instituicao</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-instituicao-modal [instituicao]="objetoSelecionadoParaEdicao" (retorno)="addOuEditarInstituicao($event)" ></app-instituicao-modal>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
   </div>
 </ng-template>

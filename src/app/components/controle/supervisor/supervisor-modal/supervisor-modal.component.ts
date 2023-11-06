@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Supervisor } from 'src/app/models/supervisor';
 import { SupervisorService } from 'src/app/services/supervisor.service';
 
@@ -8,8 +8,9 @@ import { SupervisorService } from 'src/app/services/supervisor.service';
   styleUrls: ['./supervisor-modal.component.scss']
 })
 export class SupervisorModalComponent {
+  @Input() supervisor: Supervisor = new Supervisor();
+  @Output() retorno = new EventEmitter<Supervisor>();
 
-  supervisor: Supervisor = new Supervisor();
 
   supervisorService = inject(SupervisorService);
 

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Area } from 'src/app/models/area';
 import { AreaService } from 'src/app/services/area.service';
 
@@ -8,7 +8,8 @@ import { AreaService } from 'src/app/services/area.service';
   styleUrls: ['./area-modal.component.scss'],
 })
 export class AreaModalComponent {
-  area: Area = new Area();
+  @Input() area: Area = new Area();
+  @Output() retorno = new EventEmitter<Area>();
 
   areaService = inject(AreaService);
 

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Area } from 'src/app/models/area';
 import { Distrito } from 'src/app/models/enums/distrito';
@@ -9,13 +9,14 @@ import { EquipamentoService } from 'src/app/services/equipamento.service';
 @Component({
   selector: 'app-equipamento-modal',
   templateUrl: './equipamento-modal.component.html',
-  styleUrls: ['./equipamento-modal.component.scss'],
+  styleUrls: ['./equipamento-modal.component.scss']
 })
 export class EquipamentoModalComponent {
-  equipamento: Equipamento = new Equipamento();
-  contatoList: String[] = [];
+ @Input() equipamento: Equipamento = new Equipamento();
+ @Output() retorno = new EventEmitter<Equipamento>();
 
-  distritoEnum = Distrito;
+  equipamentoSelecionado: Equipamento = new Equipamento();
+  distritoEnum = Distrito; 
   selectedDistrito!: Distrito;
   modalService = inject(NgbModal);
   modalRef!: NgbModalRef;
@@ -35,13 +36,16 @@ export class EquipamentoModalComponent {
   }
 
   retornoAreaList(area: Area) {
-    if (this.equipamento.areaList == null) this.equipamento.areaList = [];
+
+    if (this.equipamento.areaList == null)
+      this.equipamento.areaList = [];
 
     this.equipamento.areaList.push(area);
     this.modalRef.dismiss();
   }
 
   retornoSupervisorList(supervisor: Supervisor) {
+
     if (this.equipamento.supervisorList == null)
       this.equipamento.supervisorList = [];
 
@@ -49,7 +53,9 @@ export class EquipamentoModalComponent {
     this.modalRef.dismiss();
   }
 
+
   lancar(modal: any) {
     this.modalRef = this.modalService.open(modal, { size: 'lg' });
   }
+
 }
