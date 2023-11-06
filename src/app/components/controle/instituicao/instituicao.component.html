@@ -1,26 +1,49 @@
 <div class="area-container">
-  <div class="bg-style">
-    <button class="cad-btn">Nova Instituicao</button>
-    <div class="box-control">
-      <ng-container *ngIf="lista && lista.length > 0; else noContent">
-        <table class="table table-bordered table-striped">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Instituicao</th>
-            </tr>
+  <div class="bg-table-style">
+    <button class="cadastrar-btn" (click)="openCreateModal(criarInstituicao)">
+      Cadastrar
+    </button>
+
+    <div class="table-container">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Opções</th>
           </thead>
           <tbody>
-            <tr *ngFor="let instituicao of lista; let i = index">
-              <td>{{ instituicao.id }}</td>
-              <td>{{ instituicao.nomeIe }}</td>
+            <tr *ngFor="let instituicao of list; let i = index">
+              <td>
+                {{ instituicao.id }}
+              </td>
+              <td>
+                {{ instituicao.nomeIe }}
+              </td>
+              <td class="option-td">
+                <button type="button" class="btn btn-warning">Editar</button>
+                <button type="button" class="btn btn-danger">Excluir</button>
+              </td>
             </tr>
           </tbody>
         </table>
-      </ng-container>
-      <ng-template #noContent>
-        <p>content here</p>
-      </ng-template>
+      </div>
     </div>
   </div>
 </div>
+
+<ng-template #criarInstituicao let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Novo Cliente</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-instituicao-modal></app-instituicao-modal>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
