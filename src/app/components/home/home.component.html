@@ -1,92 +1,86 @@
-<div class="ct">
-  <div class="actions">
-    <app-select></app-select>
-    <button class="btn-create btn btn-primary">NOVO</button>
-  </div>
+<div class="actions">
+  <button class="btn-create btn btn-primary">NOVO</button>
+</div>
 
-  <div id="accordion" ngbAccordion>
-    <div
-      ngbAccordionItem
-      *ngFor="let solicitacao of solicitacaoList; index as i"
-    >
-      <h2 ngbAccordionHeader>
-        <button ngbAccordionButton>
-          <div class="accordion-header">
-            <div class="solicitacao-content">
-              Solicitação #{{ solicitacao.id }}
+<div id="accordion" ngbAccordion>
+  <div ngbAccordionItem *ngFor="let solicitacao of solicitacaoList; index as i">
+    <h2 ngbAccordionHeader>
+      <button ngbAccordionButton>
+        <div class="accordion-header">
+          <div class="solicitacao-content">
+            Solicitação #{{ solicitacao.id }}
+          </div>
+
+          <div class="extra">
+            <div class="equipamento-content">
+              <span>Equipamento:</span>
+              {{ solicitacao.equipamento.nomeEquipamento }}
             </div>
-
-            <div class="extra">
-              <div class="equipamento-content">
-                <span>Equipamento:</span>
-                {{ solicitacao.equipamento.nomeEquipamento }}
-              </div>
-              <div class="situacao-content">
-                <span>Situação: </span>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  [ngStyle]="{
-                    color: getCorComBaseNaSituacao(solicitacao.situacao)
-                  }"
-                >
-                  {{ solicitacao.situacao }}
-                </button>
-              </div>
-            </div>
-
-            <div class="descricao-content">
-              <span>Descrição:</span> {{ solicitacao.descricao }}
+            <div class="situacao-content">
+              <span>Situação: </span>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                [ngStyle]="{
+                  color: getCorComBaseNaSituacao(solicitacao.situacao)
+                }"
+              >
+                {{ solicitacao.situacao }}
+              </button>
             </div>
           </div>
-        </button>
-      </h2>
-      <div ngbAccordionCollapse>
-        <div ngbAccordionBody>
-          <ng-template>
-            <div class="container-content">
-              <div class="geral">
-                <div class="unidade">
-                  <div class="distrito-content">
-                    <span>Distrito:</span>
-                    {{ solicitacao.equipamento.distrito }}
-                  </div>
-                  <div class="area-content">
-                    <span>Área:</span> {{ solicitacao.area.nomeArea }}
-                  </div>
-                  <div class="supervisor-content">
-                    <span>Supervisor:</span>
-                    {{ solicitacao.supervisor.nomeSupervisor }}
-                  </div>
-                </div>
-                <div class="solicitante">
-                  <div class="ie-content">
-                    <span>IE:</span>
-                    {{ solicitacao.instituicaoDeEnsino.nomeIe }}
-                  </div>
-                  <div class="estagiarios-content">
-                    <span>Estagiários:</span> {{ solicitacao.qntdEstagiarios }}
-                  </div>
-                </div>
 
-                <div class="datas">
-                  <div class="data-content">
-                    <span>Data Início-Fim:</span>
-                    <br />
-                    {{ solicitacao.dataInicio }} ~
-                    {{ solicitacao.dataFim }}
-                  </div>
-                  <div class="expediente-content">
-                    <span>Expediente Início-Fim:</span>
-                    <br />
-                    {{ solicitacao.inicioExpediente }} ~
-                    {{ solicitacao.fimExpediente }}
-                  </div>
+          <div class="descricao-content">
+            <span>Descrição:</span> {{ solicitacao.descricao }}
+          </div>
+        </div>
+      </button>
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <div class="container-content">
+            <div class="geral">
+              <div class="unidade">
+                <div class="distrito-content">
+                  <span>Distrito:</span>
+                  {{ solicitacao.equipamento.distrito }}
+                </div>
+                <div class="area-content">
+                  <span>Área:</span> {{ solicitacao.area.nomeArea }}
+                </div>
+                <div class="supervisor-content">
+                  <span>Supervisor:</span>
+                  {{ solicitacao.supervisor.nomeSupervisor }}
+                </div>
+              </div>
+              <div class="solicitante">
+                <div class="ie-content">
+                  <span>IE:</span>
+                  {{ solicitacao.instituicaoDeEnsino.nomeIe }}
+                </div>
+                <div class="estagiarios-content">
+                  <span>Estagiários:</span> {{ solicitacao.qntdEstagiarios }}
+                </div>
+              </div>
+
+              <div class="datas">
+                <div class="data-content">
+                  <span>Data Início-Fim:</span>
+                  <br />
+                  {{ solicitacao.dataInicio }} ~
+                  {{ solicitacao.dataFim }}
+                </div>
+                <div class="expediente-content">
+                  <span>Expediente Início-Fim:</span>
+                  <br />
+                  {{ solicitacao.inicioExpediente }} ~
+                  {{ solicitacao.fimExpediente }}
                 </div>
               </div>
             </div>
-          </ng-template>
-        </div>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>

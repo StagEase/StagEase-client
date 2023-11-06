@@ -14,6 +14,7 @@ import { InstituicaoComponent } from './components/controle/instituicao/institui
 import { EquipamentoComponent } from './components/controle/equipamento/equipamento.component';
 import { HomeComponent } from './components/home/home.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { HeaderComponent } from './components/layout/header/header.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FilterComponent } from './components/filter/filter.component';
     EquipamentoComponent,
     HomeComponent,
     FilterComponent,
+    HeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [],

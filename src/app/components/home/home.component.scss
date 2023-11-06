@@ -1,6 +1,6 @@
 #accordion {
-  margin-left: 120px;
-  margin-right: 90px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .accordion-header {
@@ -53,16 +53,18 @@
 .ct {
   display: flex;
   flex-direction: column;
+  margin: auto;
 }
 
 .actions {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  margin: 60px 90px 10px 110px;
+  margin: 20px 100px;
 }
 
 .btn-create {
   width: 100px;
   height: 40px;
+  margin-right: 10px;
 }
