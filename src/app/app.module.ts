@@ -7,7 +7,7 @@ import { IndexComponent } from './components/layout/index/index.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AreaComponent } from './components/controle/area/area.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SupervisorComponent } from './components/controle/supervisor/supervisor.component';
 import { InstituicaoComponent } from './components/controle/instituicao/instituicao.component';
 import { EquipamentoComponent } from './components/controle/equipamento/equipamento.component';
@@ -37,7 +37,13 @@ import { EquipamentoModalComponent } from './components/controle/equipamento/equ
     SupervisorModalComponent,
     EquipamentoModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [AxiosService],
   bootstrap: [AppComponent],
 })

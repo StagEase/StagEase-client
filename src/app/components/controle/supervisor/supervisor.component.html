@@ -32,7 +32,13 @@
               </td>
               <td class="option-td">
                 <button type="button" class="btn btn-warning">Editar</button>
-                <button type="button" class="btn btn-danger">Excluir</button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="openDeleteConfirmationModal(deletar, supervisor)"
+                >
+                  Excluir
+                </button>
               </td>
             </tr>
           </tbody>
@@ -54,5 +60,17 @@
   </div>
   <div class="modal-body">
     <app-supervisor-modal></app-supervisor-modal>
+  </div>
+</ng-template>
+
+<ng-template #deletar let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Deseja excluir?</h4>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="modal.dismiss('Não')">
+      Não
+    </button>
+    <button class="btn btn-danger" (click)="deletarSupervisor()">Sim</button>
   </div>
 </ng-template>

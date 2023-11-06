@@ -11,7 +11,7 @@
         class="form-control"
         [(ngModel)]="equipamento.nomeEquipamento"
       />
-      <label for="nome">Gerente:</label>
+      <label for="gerente">Gerente:</label>
       <input
         type="text"
         id="gerente"
@@ -19,7 +19,7 @@
         [(ngModel)]="equipamento.gerente"
       />
       <label for="distrito">Distrito:</label>
-      <select [(ngModel)]="selectedDistrito">
+      <select class="form-control" [(ngModel)]="selectedDistrito">
         <option
           *ngFor="let distrito of distritoEnum | keyvalue"
           [ngValue]="distrito.key"
@@ -27,14 +27,14 @@
           {{ distrito.value }}
         </option>
       </select>
-      <label for="nome">contato:</label>
+      <label for="contato">contato:</label>
       <input
         type="text"
         id="contato"
         class="form-control"
         [(ngModel)]="equipamento.contatoList"
       />
-      <label for="nome">descricao:</label>
+      <label for="descricao">descricao:</label>
       <input
         type="text"
         id="descricao"

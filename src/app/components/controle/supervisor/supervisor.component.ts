@@ -6,15 +6,14 @@ import { SupervisorService } from 'src/app/services/supervisor.service';
 @Component({
   selector: 'app-supervisor',
   templateUrl: './supervisor.component.html',
-  styleUrls: ['./supervisor.component.scss']
+  styleUrls: ['./supervisor.component.scss'],
 })
 export class SupervisorComponent {
-
   @Output() retorno = new EventEmitter<Supervisor>();
   @Input() modoLancamento: boolean = false;
 
   list: Supervisor[] = [];
-  supervisorSelecionada: Supervisor = new Supervisor();
+  supervisorSelecionado: Supervisor = new Supervisor();
 
   service = inject(SupervisorService);
   modal = inject(NgbModal);
@@ -36,13 +35,37 @@ export class SupervisorComponent {
   }
 
   openCreateModal(modal: any) {
-    this.supervisorSelecionada = new Supervisor();
+    this.supervisorSelecionado = new Supervisor();
 
     this.modal.open(modal, { size: 'lg' });
   }
 
-  lancamento(supervisor: Supervisor){
+  lancamento(supervisor: Supervisor) {
     this.retorno.emit(supervisor);
   }
 
+  openDeleteConfirmationModal(modal: any, supervisor: Supervisor) {
+    this.supervisorSelecionado = supervisor;
+    console.log('Equipamento selecionado:', this.supervisorSelecionado);
+    this.modal.open(modal, { size: 'lg' });
+  }
+
+  deletarSupervisor() {
+    if (this.supervisorSelecionado) {
+      console.log('Excluindo equipamento', this.supervisorSelecionado);
+      console.log(this.supervisorSelecionado.id);
+
+      this.service
+        .delete(this.supervisorSelecionado.id)
+        .then(() => {
+          console.log('Equipamento excluído com sucesso');
+          this.modal.dismissAll('Sim');
+          location.reload();
+        })
+        .catch((error) => {
+          console.error('Erro ao excluir o equipamento:', error);
+          this.modal.dismissAll('Sim');
+        });
+    }
+  }
 }

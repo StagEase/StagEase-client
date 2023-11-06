@@ -9,13 +9,13 @@ import { EquipamentoService } from 'src/app/services/equipamento.service';
 @Component({
   selector: 'app-equipamento-modal',
   templateUrl: './equipamento-modal.component.html',
-  styleUrls: ['./equipamento-modal.component.scss']
+  styleUrls: ['./equipamento-modal.component.scss'],
 })
 export class EquipamentoModalComponent {
   equipamento: Equipamento = new Equipamento();
+  contatoList: String[] = [];
 
-
-  distritoEnum = Distrito; 
+  distritoEnum = Distrito;
   selectedDistrito!: Distrito;
   modalService = inject(NgbModal);
   modalRef!: NgbModalRef;
@@ -35,16 +35,13 @@ export class EquipamentoModalComponent {
   }
 
   retornoAreaList(area: Area) {
-
-    if (this.equipamento.areaList == null)
-      this.equipamento.areaList = [];
+    if (this.equipamento.areaList == null) this.equipamento.areaList = [];
 
     this.equipamento.areaList.push(area);
     this.modalRef.dismiss();
   }
 
   retornoSupervisorList(supervisor: Supervisor) {
-
     if (this.equipamento.supervisorList == null)
       this.equipamento.supervisorList = [];
 
