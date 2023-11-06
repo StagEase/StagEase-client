@@ -21,7 +21,13 @@
                 {{ area.nomeArea }}
               </td>
               <td class="option-td">
+                <div *ngIf="modoLancamento">
+                  <button type="button" class="btn btn-primary" (click)="lancamento(area)">Lançar</button>
+                </div>
+                <div *ngIf="!modoLancamento">
                 <button type="button" class="btn btn-warning">Editar</button>
+                </div>
+                <div *ngIf="!modoLancamento">
                 <button
                   type="button"
                   class="btn btn-danger"
@@ -29,6 +35,7 @@
                 >
                   Excluir
                 </button>
+                </div>
               </td>
             </tr>
           </tbody>

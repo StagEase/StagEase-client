@@ -31,7 +31,13 @@
                 }}
               </td>
               <td class="option-td">
-                <button type="button" class="btn btn-warning">Editar</button>
+                <div *ngIf="modoLancamento">
+                  <button type="button" class="btn btn-primary" (click)="lancamento(supervisor)">Lançar</button>
+                </div>
+                <div *ngIf="!modoLancamento">
+                <button type="button" class="btn btn-warning" (click)="editar(modal1, supervisor, i)">Editar</button>
+                </div>
+                <div *ngIf="!modoLancamento">
                 <button
                   type="button"
                   class="btn btn-danger"
@@ -39,6 +45,7 @@
                 >
                   Excluir
                 </button>
+                </div>
               </td>
             </tr>
           </tbody>
@@ -72,5 +79,18 @@
       Não
     </button>
     <button class="btn btn-danger" (click)="deletarSupervisor()">Sim</button>
+  </div>
+</ng-template>
+
+<ng-template #modal1 let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-supervisor-modal [supervisor]="objetoSelecionadoParaEdicao" (retorno)="addOuEditarSupervisor($event)" ></app-supervisor-modal>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
   </div>
 </ng-template>

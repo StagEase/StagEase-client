@@ -9,6 +9,9 @@ import { AreaService } from 'src/app/services/area.service';
   styleUrls: ['./area.component.scss'],
 })
 export class AreaComponent {
+  @Output() retorno = new EventEmitter<Area>();
+  @Input() modoLancamento: boolean = false;
+
   list: Area[] = [];
   areaSelecionada: Area = new Area();
 
@@ -35,6 +38,10 @@ export class AreaComponent {
     this.areaSelecionada = new Area();
 
     this.modal.open(modal, { size: 'lg' });
+  }
+
+  lancamento(area: Area) {
+    this.retorno.emit(area);
   }
 
   openDeleteConfirmationModal(modal: any, area: Area) {
