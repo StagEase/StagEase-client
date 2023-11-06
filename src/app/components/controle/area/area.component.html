@@ -25,7 +25,7 @@
                   <button type="button" class="btn btn-primary" (click)="lancamento(area)">Lançar</button>
                 </div>
                 <div *ngIf="!modoLancamento">
-                <button type="button" class="btn btn-warning">Editar</button>
+                <button type="button" class="btn btn-warning" (click)="editar(modal1, area, i)">Editar</button>
                 </div>
                 <div *ngIf="!modoLancamento">
                 <button
@@ -69,5 +69,18 @@
       Não
     </button>
     <button class="btn btn-danger" (click)="deletarArea()">Sim</button>
+  </div>
+</ng-template>
+
+<ng-template #modal1 let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title">Area</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-area-modal [area]="objetoSelecionadoParaEdicao" (retorno)="addOuEditarArea($event)" ></app-area-modal>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
   </div>
 </ng-template>
