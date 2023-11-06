@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { InstituicaoDeEnsino } from 'src/app/models/instituicao-de-ensino';
 import { InstituicaoDeEnsinoService } from 'src/app/services/instituicao-de-ensino.service';
 
@@ -8,7 +8,8 @@ import { InstituicaoDeEnsinoService } from 'src/app/services/instituicao-de-ensi
   styleUrls: ['./instituicao-modal.component.scss']
 })
 export class InstituicaoModalComponent {
-  instituicao: InstituicaoDeEnsino = new InstituicaoDeEnsino();
+  @Input() instituicao: InstituicaoDeEnsino = new InstituicaoDeEnsino();
+  @Output() retorno = new EventEmitter<InstituicaoDeEnsino>();
 
   instituicaoService = inject(InstituicaoDeEnsinoService);
 
