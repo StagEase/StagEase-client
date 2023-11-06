@@ -15,6 +15,7 @@ import { EquipamentoComponent } from './components/controle/equipamento/equipame
 import { HomeComponent } from './components/home/home.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/layout/header/header.component';
+import { AxiosService } from './services/axiosConfig/axios.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { HeaderComponent } from './components/layout/header/header.component';
     HeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
-  providers: [],
+  providers: [AxiosService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -2,8 +2,26 @@
   <app-select></app-select>
   <div class="bg-style">
     <button class="cad-btn">Nova Instituicao</button>
-    <div class="box-control">
-      <p>content here</p>
+    <div class="box-control" style="display: flex; flex-direction: column;">
+      <ng-container *ngIf="lista && lista.length > 0; else noContent">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Instituicao</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let instituicao of lista; let i = index">
+              <td>{{ instituicao.id }}</td>
+              <td>{{ instituicao.nome }}</td>  
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+      <ng-template #noContent>
+        <p>content here</p>
+      </ng-template>
     </div>
   </div>
 </div>
