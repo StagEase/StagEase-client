@@ -15,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { AxiosService } from './services/axiosConfig/axios.service';
+import { AreaModalComponent } from './components/controle/area/area-modal/area-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AxiosService } from './services/axiosConfig/axios.service';
     HomeComponent,
     FilterComponent,
     HeaderComponent,
+    AreaModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [AxiosService],

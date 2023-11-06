@@ -1,8 +1,49 @@
 <div class="area-container">
-  <div class="bg-style">
-    <button class="cad-btn">Nova Area</button>
-    <div class="box-control">
-      <p>content here</p>
+  <div class="bg-table-style">
+    <button class="cadastrar-btn" (click)="openCreateModal(criarArea)">
+      Cadastrar
+    </button>
+
+    <div class="table-container">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Opções</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let area of list; let i = index">
+              <td>
+                {{ area.id }}
+              </td>
+              <td>
+                {{ area.nomeArea }}
+              </td>
+              <td class="option-td">
+                <button type="button" class="btn btn-warning">Editar</button>
+                <button type="button" class="btn btn-danger">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+
+<ng-template #criarArea let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Novo Cliente</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-area-modal></app-area-modal>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
