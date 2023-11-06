@@ -31,14 +31,29 @@
                 {{ equipamento.distrito }}
               </td>
               <td>
-                {{ equipamento.contatoList }}
+                <button
+                  class="btn btn-primary"
+                  (click)="openRegularModal(mostraContatos, equipamento)"
+                >
+                  Contatos
+                </button>
               </td>
               <td>
-                {{ equipamento.descricao }}
+                {{
+                  equipamento.descricao
+                    ? equipamento.descricao
+                    : "Sem descrição"
+                }}
               </td>
               <td class="option-td">
                 <button type="button" class="btn btn-warning">Editar</button>
-                <button type="button" class="btn btn-danger">Excluir</button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="openDeleteConfirmationModal(deletar, equipamento)"
+                >
+                  Excluir
+                </button>
               </td>
             </tr>
           </tbody>
@@ -61,5 +76,34 @@
   <div class="modal-body">
     <app-equipamento-modal></app-equipamento-modal>
   </div>
+</ng-template>
+
+<ng-template #mostraContatos let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Lista de contatos:</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div *ngFor="let contato of contatosDoEquipamento">
+      <p>{{ contato }}</p>
+    </div>
+  </div>
   <div class="modal-footer"></div>
+</ng-template>
+
+<ng-template #deletar let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Deseja excluir?</h4>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="modal.dismiss('Não')">
+      Não
+    </button>
+    <button class="btn btn-danger" (click)="deletarEquipamento()">Sim</button>
+  </div>
 </ng-template>

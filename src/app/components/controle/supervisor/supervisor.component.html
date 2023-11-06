@@ -26,7 +26,9 @@
                 {{ supervisor.matricula }}
               </td>
               <td>
-                {{ supervisor.descricao }}
+                {{
+                  supervisor.descricao ? supervisor.descricao : "Sem descrição"
+                }}
               </td>
               <td class="option-td">
                 <button type="button" class="btn btn-warning">Editar</button>
@@ -53,5 +55,4 @@
   <div class="modal-body">
     <app-supervisor-modal></app-supervisor-modal>
   </div>
-  <div class="modal-footer"></div>
 </ng-template>

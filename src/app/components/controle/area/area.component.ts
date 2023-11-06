@@ -9,10 +9,6 @@ import { AreaService } from 'src/app/services/area.service';
   styleUrls: ['./area.component.scss'],
 })
 export class AreaComponent {
-
-  @Output() retorno = new EventEmitter<Area>();
-  @Input() modoLancamento: boolean = false;
-  
   list: Area[] = [];
   areaSelecionada: Area = new Area();
 
@@ -41,8 +37,28 @@ export class AreaComponent {
     this.modal.open(modal, { size: 'lg' });
   }
 
-  lancamento(area: Area){
-    this.retorno.emit(area);
+  openDeleteConfirmationModal(modal: any, area: Area) {
+    this.areaSelecionada = area;
+    console.log('Equipamento selecionado:', this.areaSelecionada);
+    this.modal.open(modal, { size: 'lg' });
   }
-  
+
+  deletarArea() {
+    if (this.areaSelecionada) {
+      console.log('Excluindo equipamento', this.areaSelecionada);
+      console.log(this.areaSelecionada.id);
+
+      this.service
+        .delete(this.areaSelecionada.id)
+        .then(() => {
+          console.log('Equipamento excluído com sucesso');
+          this.modal.dismissAll('Sim');
+          location.reload();
+        })
+        .catch((error) => {
+          console.error('Erro ao excluir o equipamento:', error);
+          this.modal.dismissAll('Sim');
+        });
+    }
+  }
 }

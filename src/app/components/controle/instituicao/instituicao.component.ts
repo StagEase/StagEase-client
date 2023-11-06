@@ -6,10 +6,9 @@ import { InstituicaoDeEnsinoService } from 'src/app/services/instituicao-de-ensi
 @Component({
   selector: 'app-instituicao',
   templateUrl: './instituicao.component.html',
-  styleUrls: ['./instituicao.component.scss']
+  styleUrls: ['./instituicao.component.scss'],
 })
 export class InstituicaoComponent {
-
   list: InstituicaoDeEnsino[] = [];
   instituicaoSelecionada: InstituicaoDeEnsino = new InstituicaoDeEnsino();
 
@@ -38,4 +37,28 @@ export class InstituicaoComponent {
     this.modal.open(modal, { size: 'lg' });
   }
 
+  openDeleteConfirmationModal(modal: any, instituicao: InstituicaoDeEnsino) {
+    this.instituicaoSelecionada = instituicao;
+    console.log('Equipamento selecionado:', this.instituicaoSelecionada);
+    this.modal.open(modal, { size: 'lg' });
+  }
+
+  deletarIE() {
+    if (this.instituicaoSelecionada) {
+      console.log('Excluindo equipamento', this.instituicaoSelecionada);
+      console.log(this.instituicaoSelecionada.id);
+
+      this.service
+        .delete(this.instituicaoSelecionada.id)
+        .then(() => {
+          console.log('Equipamento excluído com sucesso');
+          this.modal.dismissAll('Sim');
+          location.reload();
+        })
+        .catch((error) => {
+          console.error('Erro ao excluir o equipamento:', error);
+          this.modal.dismissAll('Sim');
+        });
+    }
+  }
 }
