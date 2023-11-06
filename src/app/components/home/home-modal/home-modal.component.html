@@ -1,0 +1,67 @@
+<div>
+  <div class="modal-title">
+    <h2>Preencha os campos</h2>
+  </div>
+  <div class="modal-content">
+    <div class="form-group">
+      <label class="label-form" for="select_equipamento" class="label"
+        >Nome do Equipamento:</label
+      >
+      <select
+        name="select_equipamento"
+        class="label estilo"
+        [(ngModel)]="solicitacao.equipamento"
+      >
+        <option
+          *ngFor="let equipamento of equipamentos"
+          [ngValue]="equipamento.id"
+        >
+          {{ equipamento.nomeEquipamento }}
+        </option>
+      </select>
+      <label class="label-form" for="select_area" class="label"
+        >Nome da Area:</label
+      >
+      <select
+        name="select_area"
+        class="label estilo"
+        [(ngModel)]="solicitacao.area"
+      >
+        <option *ngFor="let area of areas" [ngValue]="area.id">
+          {{ area.nomeArea }}
+        </option>
+      </select>
+
+      <label class="label-form" for="select_supervisor" class="label"
+        >Nome do Supervisor:</label
+      >
+      <select
+        name="select_supervisor"
+        class="label estilo"
+        [(ngModel)]="solicitacao.supervisor"
+      >
+        <option
+          *ngFor="let supervisor of supervisores"
+          [ngValue]="supervisor.id"
+        >
+          {{ supervisor.nomeSupervisor }}
+        </option>
+      </select>
+
+      <label class="label-form" for="select_situacao" class="label"
+        >Situacão:</label
+      >
+      <!-- <select name="select_situacao" class="label estilo" [(ngModel)]="situacaoSelected">
+        <option *ngFor="let situacao of situacoes" [ngValue]="situacao">
+          {{ situacao }}
+        </option>
+      </select> -->
+
+      <div class="modal-footer">
+        <button id="modalBtn" class="btn btn-primary" (click)="save()">
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

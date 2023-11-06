@@ -19,6 +19,7 @@ import { AreaModalComponent } from './components/controle/area/area-modal/area-m
 import { InstituicaoModalComponent } from './components/controle/instituicao/instituicao-modal/instituicao-modal.component';
 import { SupervisorModalComponent } from './components/controle/supervisor/supervisor-modal/supervisor-modal.component';
 import { EquipamentoModalComponent } from './components/controle/equipamento/equipamento-modal/equipamento-modal.component';
+import { HomeModalComponent } from './components/home/home-modal/home-modal.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { EquipamentoModalComponent } from './components/controle/equipamento/equ
     InstituicaoModalComponent,
     SupervisorModalComponent,
     EquipamentoModalComponent,
+    HomeModalComponent,
   ],
   imports: [
     BrowserModule,

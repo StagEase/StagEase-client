@@ -1,5 +1,8 @@
 <div class="actions">
-  <button class="btn-create btn btn-primary">
+  <button
+    class="btn-create btn btn-primary"
+    (click)="openCreateModal(criarSolicitacao)"
+  >
     <span style="font-weight: bolder">+ </span>NOVO
   </button>
 </div>
@@ -101,8 +104,17 @@
                 </div>
               </div>
               <div class="btn-group-vertical" role="group">
-                <img src="../../../assets/icons/pencil-square.svg" alt="Editar" ngbTooltip="Editar">
-                <img src="../../../assets/icons/trash3-fill.svg" alt="Excluir" ngbTooltip="Excluir">
+                <img
+                  src="../../../assets/icons/pencil-square.svg"
+                  alt="Editar"
+                  ngbTooltip="Editar"
+                />
+                <img
+                  src="../../../assets/icons/trash3-fill.svg"
+                  alt="Excluir"
+                  ngbTooltip="Excluir"
+                  (click)="openDeleteConfirmationModal(deletar, solicitacao)"
+                />
               </div>
             </div>
           </div>
@@ -111,3 +123,30 @@
     </div>
   </div>
 </div>
+
+<ng-template #criarSolicitacao let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Novo equipamento</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-home-modal></app-home-modal>
+  </div>
+</ng-template>
+
+<ng-template #deletar let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Deseja excluir?</h4>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="modal.dismiss('Não')">
+      Não
+    </button>
+    <button class="btn btn-danger" (click)="deletarEquipamento()">Sim</button>
+  </div>
+</ng-template>
