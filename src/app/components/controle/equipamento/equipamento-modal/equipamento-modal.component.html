@@ -19,11 +19,9 @@
         [(ngModel)]="equipamento.gerente"
       />
       <label for="distrito">Distrito:</label>
-      <select class="form-control" [(ngModel)]="selectedDistrito">
-      <option *ngFor="let distrito of distritoEnum | keyvalue" [ngValue]="distrito.key">
-        {{ distrito.value }}
-      </option>
-      </select>
+<select class="form-control" [(ngModel)]="equipamento.distrito">
+  <option *ngFor="let distrito of distritoValues" [ngValue]="distrito">{{ distrito }}</option>
+</select>
       <label for="contato">contato:</label>
       <input
         type="text"
@@ -31,6 +29,30 @@
         class="form-control"
         [(ngModel)]="equipamento.contatoList"
       />
+      <label class="label-form" for="select_area" class="label"
+        >Area</label
+      >
+      <select
+        name="select_area"
+        class="label estilo"
+        [(ngModel)]="equipamento.areaList"
+      >
+        <option *ngFor="let area of areas" [ngValue]="area.id">
+          {{ area.nomeArea }}
+        </option>
+      </select>
+      <label class="label-form" for="select_supervisor" class="label"
+        >Supervisor</label
+      >
+      <select
+        name="select_supervisor"
+        class="label estilo"
+        [(ngModel)]="equipamento.supervisorList"
+      >
+        <option *ngFor="let supervisor of supervisores" [ngValue]="supervisor.id">
+          {{ supervisor.nomeSupervisor }}
+        </option>
+      </select>
       <label for="descricao">descricao:</label>
       <input
         type="text"
@@ -38,12 +60,6 @@
         class="form-control"
         [(ngModel)]="equipamento.descricao"
       />
-      <button type="button" class="btn btn-primary" (click)="lancar(modal1)">
-        Lançar area
-      </button>
-      <button type="button" class="btn btn-primary" (click)="lancar(modal2)">
-        Lançar supervisor
-      </button>
     </div>
     <div class="modal-footer">
       <button id="modalBtn" class="btn btn-primary" (click)="save()">
@@ -53,76 +69,3 @@
   </div>
 </div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Matricula</th>
-            <th scope="col">Descricao</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let supervisor of equipamento.supervisorList; let i = index">
-            <th scope="row">{{ supervisor.id }}</th>
-            <td> {{ supervisor.nomeSupervisor }} </td>
-            <td> {{ supervisor.matricula }} </td>
-            <td> {{ supervisor.descricao ? supervisor.descricao : "Sem descrição" }} </td>
-        </tr>
-    </tbody>
-</table>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nome</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let area of equipamento.areaList; let i = index">
-            <th scope="row">{{ area.id }}</th>
-            <td> {{ area.nomeArea }} </td>
-        </tr>
-    </tbody>
-</table>
-
-<ng-template #modal1 let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title">Area</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-        <app-area [modoLancamento]="true" (retorno)="retornoAreaList($event)"></app-area>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-    </div>
-</ng-template>
-
-<ng-template #modal2 let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Supervisor</h4>
-    <button
-      type="button"
-      class="btn-close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    ></button>
-  </div>
-  <div class="modal-body">
-    <app-supervisor
-      [modoLancamento]="true"
-      (retorno)="retornoSupervisorList($event)"
-    ></app-supervisor>
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-light"
-      (click)="modal.close('Close click')"
-    >
-      Close
-    </button>
-  </div>
-</ng-template>

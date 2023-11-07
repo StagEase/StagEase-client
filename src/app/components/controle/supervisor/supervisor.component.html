@@ -31,13 +31,7 @@
                 }}
               </td>
               <td class="option-td">
-                <div *ngIf="modoLancamento">
-                  <button type="button" class="btn btn-primary" (click)="lancamento(supervisor)">Lançar</button>
-                </div>
-                <div *ngIf="!modoLancamento">
                 <button type="button" class="btn btn-warning" (click)="editar(modal1, supervisor, i)">Editar</button>
-                </div>
-                <div *ngIf="!modoLancamento">
                 <button
                   type="button"
                   class="btn btn-danger"
@@ -45,7 +39,6 @@
                 >
                   Excluir
                 </button>
-                </div>
               </td>
             </tr>
           </tbody>

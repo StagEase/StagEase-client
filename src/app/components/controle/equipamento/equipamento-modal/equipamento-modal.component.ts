@@ -4,7 +4,9 @@ import { Area } from 'src/app/models/area';
 import { Distrito } from 'src/app/models/enums/distrito';
 import { Equipamento } from 'src/app/models/equipamento';
 import { Supervisor } from 'src/app/models/supervisor';
+import { AreaService } from 'src/app/services/area.service';
 import { EquipamentoService } from 'src/app/services/equipamento.service';
+import { SupervisorService } from 'src/app/services/supervisor.service';
 
 @Component({
   selector: 'app-equipamento-modal',
@@ -15,6 +17,9 @@ export class EquipamentoModalComponent {
  @Input() equipamento: Equipamento = new Equipamento();
  @Output() retorno = new EventEmitter<Equipamento>();
 
+  areas: Area[] = [];
+  supervisores: Supervisor[] = [];
+  distritoValues = Object.values(Distrito);
   equipamentoSelecionado: Equipamento = new Equipamento();
   distritoEnum = Distrito; 
   selectedDistrito!: Distrito;
@@ -22,6 +27,35 @@ export class EquipamentoModalComponent {
   modalRef!: NgbModalRef;
 
   equipamentoService = inject(EquipamentoService);
+  areaService = inject(AreaService)
+  supervisorService = inject(SupervisorService)
+
+  ngOnInit() {
+    this.getAreas();
+    this.getSupervisores();
+  }
+
+  getAreas() {
+    this.areaService
+      .list()
+      .then((response) => {
+        this.areas = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  getSupervisores() {
+    this.supervisorService
+      .list()
+      .then((response) => {
+        this.supervisores = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   save() {
     this.equipamentoService
@@ -36,7 +70,6 @@ export class EquipamentoModalComponent {
   }
 
   retornoAreaList(area: Area) {
-
     if (this.equipamento.areaList == null)
       this.equipamento.areaList = [];
 
