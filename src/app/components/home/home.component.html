@@ -1,129 +1,154 @@
-<div class="actions">
-  <button
-    class="btn-create btn btn-primary"
-    (click)="openCreateModal(criarSolicitacao)"
-  >
-    <span style="font-weight: bolder">+ </span>NOVO
-  </button>
-</div>
+<div class="content">
+  <div id="accordion" ngbAccordion>
+    <div
+      ngbAccordionItem
+      *ngFor="let solicitacao of solicitacaoList; index as i"
+    >
+      <h2 ngbAccordionHeader>
+        <button ngbAccordionButton>
+          <div class="accordion-header">
+            <div class="solicitacao-content">
+              Solicitação #{{ solicitacao.id }}
+            </div>
 
-<div id="accordion" ngbAccordion>
-  <div ngbAccordionItem *ngFor="let solicitacao of solicitacaoList; index as i">
-    <h2 ngbAccordionHeader>
-      <button ngbAccordionButton>
-        <div class="accordion-header">
-          <div class="solicitacao-content">
-            Solicitação #{{ solicitacao.id }}
-          </div>
-
-          <div class="extra-top">
-            <div class="equipamento-content">
-              <span>Equipamento:</span>
-              {{ solicitacao.equipamento.nomeEquipamento }}
-            </div>
-            <div class="situacao-content">
-              <span>Situação: </span>
-              <button
-                type="button"
-                class="btn btn-dark"
-                [ngStyle]="{
-                  color: getCorComBaseNaSituacao(solicitacao.situacao)
-                }"
-              >
-                {{ solicitacao.situacao }}
-              </button>
-            </div>
-          </div>
-          <div class="extra-bottom">
-            <div class="descricao-content">
-              <span>Descrição:</span>
-              <p>
-                {{
-                  solicitacao.descricao
-                    ? solicitacao.descricao
-                    : "Sem descrição"
-                }}
-              </p>
-            </div>
-            <div class="ativo-content">
-              <span>Status:</span>
-              <p>
+            <div class="extra-top">
+              <div class="equipamento-content">
+                <span>Equipamento:</span>
+                {{ solicitacao.equipamento.nomeEquipamento }}
+              </div>
+              <div class="situacao-content">
+                <span>Situação: </span>
                 <button
                   type="button"
-                  class="btn"
-                  [ngClass]="solicitacao.ativo ? 'btn-success' : 'btn-danger'"
+                  class="btn btn-outline-success disabled"
+                  [ngStyle]="{
+                    color: getCorComBaseNaSituacao(solicitacao.situacao)
+                  }"
                 >
-                  {{ solicitacao.ativo ? "Ativo" : "Inativo" }}
+                  {{ solicitacao.situacao }}
                 </button>
-              </p>
+              </div>
+            </div>
+            <div class="extra-bottom">
+              <div class="descricao-content">
+                <span>Descrição:</span>
+                <p>
+                  {{
+                    solicitacao.descricao
+                      ? solicitacao.descricao
+                      : "Sem descrição"
+                  }}
+                </p>
+              </div>
+              <div class="ativo-content">
+                <span>Status:</span>
+                <p>
+                  <button
+                    type="button"
+                    class="btn btn-outline-success disabled"
+                    [ngClass]="
+                      solicitacao.ativo
+                        ? 'btn btn-outline-success'
+                        : 'btn btn-outline-danger'
+                    "
+                  >
+                    {{ solicitacao.ativo ? "Ativo" : "Inativo" }}
+                  </button>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </button>
-    </h2>
-    <div ngbAccordionCollapse>
-      <div ngbAccordionBody>
-        <ng-template>
-          <div class="container-content">
-            <div class="geral">
-              <div class="unidade">
-                <div class="distrito-content">
-                  <span>Distrito:</span>
-                  {{ solicitacao.equipamento.distrito }}
+        </button>
+      </h2>
+      <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+          <ng-template>
+            <div class="container-content">
+              <div class="geral">
+                <div class="unidade">
+                  <div class="distrito-content">
+                    <span>Distrito:</span>
+                    {{ solicitacao.equipamento.distrito }}
+                  </div>
+                  <div class="area-content">
+                    <span>Área:</span> {{ solicitacao.area.nomeArea }}
+                  </div>
+                  <div class="supervisor-content">
+                    <span>Supervisor:</span>
+                    {{ solicitacao.supervisor.nomeSupervisor }}
+                  </div>
                 </div>
-                <div class="area-content">
-                  <span>Área:</span> {{ solicitacao.area.nomeArea }}
+                <div class="solicitante">
+                  <div class="ie-content">
+                    <span>IE:</span>
+                    {{ solicitacao.instituicaoDeEnsino.nomeIe }}
+                  </div>
+                  <div class="estagiarios-content">
+                    <span>Estagiários:</span> {{ solicitacao.qntdEstagiarios }}
+                  </div>
                 </div>
-                <div class="supervisor-content">
-                  <span>Supervisor:</span>
-                  {{ solicitacao.supervisor.nomeSupervisor }}
-                </div>
-              </div>
-              <div class="solicitante">
-                <div class="ie-content">
-                  <span>IE:</span>
-                  {{ solicitacao.instituicaoDeEnsino.nomeIe }}
-                </div>
-                <div class="estagiarios-content">
-                  <span>Estagiários:</span> {{ solicitacao.qntdEstagiarios }}
-                </div>
-              </div>
 
-              <div class="datas">
-                <div class="data-content">
-                  <span>Data Início-Fim:</span>
-                  <br />
-                  {{ solicitacao.dataInicio }} ~
-                  {{ solicitacao.dataFim }}
+                <div class="datas">
+                  <div class="data-content">
+                    <span>Data Início-Fim:</span>
+                    <br />
+                    {{ solicitacao.dataInicio }} ~
+                    {{ solicitacao.dataFim }}
+                  </div>
+                  <div class="expediente-content">
+                    <span>Expediente Início-Fim:</span>
+                    <br />
+                    {{ solicitacao.inicioExpediente }} ~
+                    {{ solicitacao.fimExpediente }}
+                  </div>
                 </div>
-                <div class="expediente-content">
-                  <span>Expediente Início-Fim:</span>
-                  <br />
-                  {{ solicitacao.inicioExpediente }} ~
-                  {{ solicitacao.fimExpediente }}
+                <div class="btn-group-vertical" role="group">
+                  <img
+                    src="../../../assets/icons/pencil-square.svg"
+                    alt="Editar"
+                    ngbTooltip="Editar"
+                  />
+                  <img
+                    src="../../../assets/icons/trash3-fill.svg"
+                    alt="Excluir"
+                    ngbTooltip="Excluir"
+                    (click)="openDeleteConfirmationModal(deletar, solicitacao)"
+                  />
                 </div>
-              </div>
-              <div class="btn-group-vertical" role="group">
-                <img
-                  src="../../../assets/icons/pencil-square.svg"
-                  alt="Editar"
-                  ngbTooltip="Editar"
-                />
-                <img
-                  src="../../../assets/icons/trash3-fill.svg"
-                  alt="Excluir"
-                  ngbTooltip="Excluir"
-                  (click)="openDeleteConfirmationModal(deletar, solicitacao)"
-                />
               </div>
             </div>
-          </div>
-        </ng-template>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
+  <div class="actions">
+    <button
+      type="button"
+      class="button"
+      (click)="openCreateModal(criarSolicitacao)"
+    >
+      <span class="button__text">Novo Solicitação</span>
+      <span class="button__icon"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          stroke="currentColor"
+          height="24"
+          fill="none"
+          class="svg"
+        >
+          <line y2="19" y1="5" x2="12" x1="12"></line>
+          <line y2="12" y1="12" x2="19" x1="5"></line></svg
+      ></span>
+    </button>
+  </div>
+</div>
 <ng-template #criarSolicitacao let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Novo equipamento</h4>

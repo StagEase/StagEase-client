@@ -21,6 +21,7 @@ import { SupervisorModalComponent } from './components/controle/supervisor/super
 import { EquipamentoModalComponent } from './components/controle/equipamento/equipamento-modal/equipamento-modal.component';
 import { HomeModalComponent } from './components/home/home-modal/home-modal.component';
 import { LoginComponent } from './components/login/login.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { LoginComponent } from './components/login/login.component';
     EquipamentoModalComponent,
     HomeModalComponent,
     LoginComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
