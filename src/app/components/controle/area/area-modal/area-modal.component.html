@@ -4,13 +4,15 @@
   </div>
   <div class="modal-content">
     <div class="form-group">
-      <label for="nome">Nome da Area:</label>
-      <input
-        type="text"
-        id="nome"
-        class="form-control"
-        [(ngModel)]="area.nomeArea"
-      />
+      <div class="group-modal">
+        <label for="nome">Nome da Area:</label>
+        <input
+          type="text"
+          id="nome"
+          class="form-control"
+          [(ngModel)]="area.nomeArea"
+        />
+      </div>
     </div>
     <div class="modal-footer">
       <button id="modalBtn" class="btn btn-primary" (click)="save()">
