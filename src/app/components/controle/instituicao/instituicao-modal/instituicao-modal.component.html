@@ -1,9 +1,10 @@
 <div>
-    <div class="modal-title">
-      <h2>Preencha os campos</h2>
-    </div>
-    <div class="modal-content">
-      <div class="form-group">
+  <div class="modal-title">
+    <h2>Preencha os campos</h2>
+  </div>
+  <div class="modal-content">
+    <div class="form-group">
+      <div class="group-modal">
         <label for="nome">Nome da instituicao:</label>
         <input
           type="text"
@@ -12,11 +13,11 @@
           [(ngModel)]="instituicao.nomeIe"
         />
       </div>
-      <div class="modal-footer">
-        <button id="modalBtn" class="btn btn-primary" (click)="save()">
-          Salvar
-        </button>
-      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="modalBtn" class="btn btn-primary" (click)="save()">
+        Salvar
+      </button>
     </div>
   </div>
-  
+</div>

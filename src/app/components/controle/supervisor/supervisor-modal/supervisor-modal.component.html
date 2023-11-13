@@ -1,9 +1,10 @@
 <div>
-    <div class="modal-title">
-      <h2>Preencha os campos</h2>
-    </div>
-    <div class="modal-content">
-      <div class="form-group">
+  <div class="modal-title">
+    <h2>Preencha os campos</h2>
+  </div>
+  <div class="modal-content">
+    <div class="form-group">
+      <div class="group-modal">
         <label for="nome">Nome do supervisor:</label>
         <input
           type="text"
@@ -11,6 +12,9 @@
           class="form-control"
           [(ngModel)]="supervisor.nomeSupervisor"
         />
+      </div>
+
+      <div class="group-modal">
         <label for="matricula">Matricula:</label>
         <input
           type="text"
@@ -18,6 +22,9 @@
           class="form-control"
           [(ngModel)]="supervisor.matricula"
         />
+      </div>
+
+      <div class="group-modal">
         <label for="descricao">Descricao:</label>
         <input
           type="text"
@@ -33,4 +40,4 @@
       </div>
     </div>
   </div>
-  
+</div>
