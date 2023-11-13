@@ -4,115 +4,123 @@
   </div>
   <div class="modal-content">
     <div class="form-group">
-      <label class="label-form" for="select_equipamento" class="label">
-        Nome do Equipamento:
-      </label>
-      <select
-        name="select_equipamento"
-        class="label estilo"
-        [(ngModel)]="solicitacao.equipamento"
-      >
-        <option
-          *ngFor="let equipamento of equipamentos"
-          [ngValue]="equipamento.id"
+      <div class="group-modal">
+        <label class="label-form" for="select_equipamento" class="label">
+          Nome do Equipamento:
+        </label>
+        <select
+          name="select_equipamento"
+          class="label estilo"
+          [(ngModel)]="solicitacao.equipamento"
         >
-          {{ equipamento.nomeEquipamento }}
-        </option>
-      </select>
-
-      <label class="label-form" for="input_qntdEstagiarios" class="label">
-        Quantidade de estagiários:
-      </label>
-      <input
-        type="number"
-        name="input_qntdEstagiarios"
-        [(ngModel)]="solicitacao.qntdEstagiarios"
-      />
-
-      <label class="label-form" for="select_area" class="label">
-        Nome da Área:
-      </label>
-      <select
-        name="select_area"
-        class="label estilo"
-        [(ngModel)]="solicitacao.area"
-      >
-        <option *ngFor="let area of areas" [ngValue]="area.id">
-          {{ area.nomeArea }}
-        </option>
-      </select>
-
-      <label class="label-form" for="select_supervisor" class="label">
-        Nome do Supervisor:
-      </label>
-      <select
-        name="select_supervisor"
-        class="label estilo"
-        [(ngModel)]="solicitacao.supervisor"
-      >
-        <option
-          *ngFor="let supervisor of supervisores"
-          [ngValue]="supervisor.id"
+          <option
+            *ngFor="let equipamento of equipamentos"
+            [ngValue]="equipamento.id"
+          >
+            {{ equipamento.nomeEquipamento }}
+          </option>
+        </select>
+      </div>
+      <div class="group-modal">
+        <label class="label-form" for="input_qntdEstagiarios" class="label">
+          Quantidade de estagiários:
+        </label>
+        <input
+          type="number"
+          name="input_qntdEstagiarios"
+          [(ngModel)]="solicitacao.qntdEstagiarios"
+        />
+      </div>
+      <div class="group-modal">
+        <label class="label-form" for="select_area" class="label">
+          Nome da Área:
+        </label>
+        <select
+          name="select_area"
+          class="label estilo"
+          [(ngModel)]="solicitacao.area"
         >
-          {{ supervisor.nomeSupervisor }}
-        </option>
-      </select>
-
-      <label class="label-form" for="select_situacao" class="label">
-        Situação:
-      </label>
-      <select
-        name="select_situacao"
-        class="label estilo"
-        [(ngModel)]="situacaoSelected"
-      >
-        <option *ngFor="let situacao of situacoes" [ngValue]="situacao">
-          {{ situacao }}
-        </option>
-      </select>
-
-      <label class="label-form" for="input_dataInicio" class="label">
-        Data de Início:
-      </label>
-      <input
-        type="date"
-        name="input_dataInicio"
-        [(ngModel)]="solicitacao.dataInicio"
-      />
-
-      <label class="label-form" for="input_dataFim" class="label">
-        Data de Fim:
-      </label>
-      <input
-        type="date"
-        name="input_dataFim"
-        [(ngModel)]="solicitacao.dataFim"
-      />
-
-      <label class="label-form" for="input_inicioExpediente" class="label">
-        Hora de Início do Expediente:
-      </label>
-      <input
-        type="time"
-        name="input_inicioExpediente"
-        [(ngModel)]="solicitacao.inicioExpediente"
-      />
-
-      <label class="label-form" for="input_fimExpediente" class="label">
-        Hora de Fim do Expediente:
-      </label>
-      <input
-        type="time"
-        name="input_fimExpediente"
-        [(ngModel)]="solicitacao.fimExpediente"
-      />
-
-      <div class="modal-footer"></div>
-    </div>
-    <div class="modal-footer">
-      <button id="modalBtn" class="btn btn-primary" (click)="save()">
-        Salvar
-      </button>
+          <option *ngFor="let area of areas" [ngValue]="area.id">
+            {{ area.nomeArea }}
+          </option>
+        </select>
+      </div>
+      <div class="group-modal">
+        <label class="label-form" for="select_supervisor" class="label">
+          Nome do Supervisor:
+        </label>
+        <select
+          name="select_supervisor"
+          class="label estilo"
+          [(ngModel)]="solicitacao.supervisor"
+        >
+          <option
+            *ngFor="let supervisor of supervisores"
+            [ngValue]="supervisor.id"
+          >
+            {{ supervisor.nomeSupervisor }}
+          </option>
+        </select>
+      </div>
+      <div class="group-modal">
+        <label class="label-form" for="select_situacao" class="label">
+          Situação:
+        </label>
+        <select
+          name="select_situacao"
+          class="label estilo"
+          [(ngModel)]="situacaoSelected"
+        >
+          <option *ngFor="let situacao of situacoes" [ngValue]="situacao">
+            {{ situacao }}
+          </option>
+        </select>
+      </div>
+      <div class="group-modal">
+        <label class="label-form" for="input_dataInicio" class="label">
+          Data de Início:
+        </label>
+        <input
+          type="date"
+          name="input_dataInicio"
+          [(ngModel)]="solicitacao.dataInicio"
+        />
+      </div>
+      <div class="group-modal">
+        <label class="label-form" for="input_dataFim" class="label">
+          Data de Fim:
+        </label>
+        <input
+          type="date"
+          name="input_dataFim"
+          [(ngModel)]="solicitacao.dataFim"
+        />
+      </div>
+      <div class="group-modal">
+        <label class="label-form" for="input_inicioExpediente" class="label">
+          Hora de Início do Expediente:
+        </label>
+        <input
+          type="time"
+          name="input_inicioExpediente"
+          [(ngModel)]="solicitacao.inicioExpediente"
+        />
+      </div>
+      <div class="group-modal">
+        <label class="label-form" for="input_fimExpediente" class="label">
+          Hora de Fim do Expediente:
+        </label>
+        <input
+          type="time"
+          name="input_fimExpediente"
+          [(ngModel)]="solicitacao.fimExpediente"
+        />
+      </div>
+      <div class="modal-footer">
+        <button id="modalBtn" class="btn btn-primary" (click)="save()">
+          Salvar
+        </button>
+      </div>
     </div>
   </div>
 </div>

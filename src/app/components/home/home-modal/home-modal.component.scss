@@ -1,0 +1,29 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  .group-modal {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px 4px 12px;
+  }
+  .group-modal select {
+    width: 60%;
+  }
+  .group-modal input {
+    display: flex;
+    align-items: center;
+    width: 60%;
+  }
+  .group-modal label {
+    font-family: "Open Sans", sans-serif;
+  }
+}
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
