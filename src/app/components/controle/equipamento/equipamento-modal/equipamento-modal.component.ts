@@ -11,24 +11,25 @@ import { SupervisorService } from 'src/app/services/supervisor.service';
 @Component({
   selector: 'app-equipamento-modal',
   templateUrl: './equipamento-modal.component.html',
-  styleUrls: ['./equipamento-modal.component.scss']
+  styleUrls: ['./equipamento-modal.component.scss'],
 })
 export class EquipamentoModalComponent {
- @Input() equipamento: Equipamento = new Equipamento();
- @Output() retorno = new EventEmitter<Equipamento>();
+  @Input() equipamento: Equipamento = new Equipamento();
+  @Output() retorno = new EventEmitter<Equipamento>();
 
   areas: Area[] = [];
   supervisores: Supervisor[] = [];
-  distritoValues = Object.values(Distrito);
-  equipamentoSelecionado: Equipamento = new Equipamento();
-  distritoEnum = Distrito; 
-  selectedDistrito!: Distrito;
+  contatosTemp: string[] = [''];
+
+  areaSelected: Area[] = [];
+  supervisorSelected: Supervisor[] = [];
+
   modalService = inject(NgbModal);
   modalRef!: NgbModalRef;
 
   equipamentoService = inject(EquipamentoService);
-  areaService = inject(AreaService)
-  supervisorService = inject(SupervisorService)
+  areaService = inject(AreaService);
+  supervisorService = inject(SupervisorService);
 
   ngOnInit() {
     this.getAreas();
@@ -57,7 +58,42 @@ export class EquipamentoModalComponent {
       });
   }
 
+  getDistritoEnum(): string[] {
+    return Object.values(Distrito).filter(
+      (value) => typeof value === 'string'
+    ) as string[];
+  }
+
+  adicionarContato() {
+    this.contatosTemp.push('');
+  }
+
+  removerContato(index: number) {
+    this.contatosTemp.splice(index, 1);
+  }
+
+  toggleAreaSelection(area: Area) {
+    if (this.areaSelected.includes(area)) {
+      this.areaSelected = this.areaSelected.filter((a) => a !== area);
+    } else {
+      this.areaSelected.push(area);
+    }
+  }
+
+  toggleSupervisorSelection(supervisor: Supervisor) {
+    if (this.supervisorSelected.includes(supervisor)) {
+      this.supervisorSelected = this.supervisorSelected.filter(
+        (s) => s !== supervisor
+      );
+    } else {
+      this.supervisorSelected.push(supervisor);
+    }
+  }
+
   save() {
+    this.equipamento.contatoList = [...this.contatosTemp];
+    this.equipamento.areaList = this.areaSelected;
+
     this.equipamentoService
       .create(this.equipamento)
       .then((response) => {
@@ -66,29 +102,6 @@ export class EquipamentoModalComponent {
       .catch((error) => {
         console.log(error);
       });
-    location.reload();
+    this.equipamento.contatoList = [];
   }
-
-  retornoAreaList(area: Area) {
-    if (this.equipamento.areaList == null)
-      this.equipamento.areaList = [];
-
-    this.equipamento.areaList.push(area);
-    this.modalRef.dismiss();
-  }
-
-  retornoSupervisorList(supervisor: Supervisor) {
-
-    if (this.equipamento.supervisorList == null)
-      this.equipamento.supervisorList = [];
-
-    this.equipamento.supervisorList.push(supervisor);
-    this.modalRef.dismiss();
-  }
-
-
-  lancar(modal: any) {
-    this.modalRef = this.modalService.open(modal, { size: 'lg' });
-  }
-
 }

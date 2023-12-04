@@ -22,44 +22,81 @@
           [(ngModel)]="equipamento.gerente"
         />
       </div>
-      
       <div class="group-modal">
-        <label for="contato">Contato:</label>
-        <input
-          type="text"
-          id="contato"
-          class="form-control"
-          [(ngModel)]="equipamento.contatoList"
-        />
-      </div>
-      <div class="group-modal">
-        <label class="label-form" for="select_area" class="label">Area:</label>
+        <label class="label-form" for="select_area" class="label"
+          >Distrito:</label
+        >
         <select
           name="select_area"
           class="form-control"
-          [(ngModel)]="equipamento.areaList"
+          [(ngModel)]="equipamento.distrito"
         >
-          <option *ngFor="let area of areas" [ngValue]="area">
-            {{ area.nomeArea }}
+          <option
+            *ngFor="let distrito of getDistritoEnum()"
+            [ngValue]="distrito"
+          >
+            {{ distrito }}
           </option>
         </select>
+      </div>
+      <div class="group-modal">
+        <label for="contato">Contato:</label>
+        <div>
+          <div
+            *ngFor="let contato of contatosTemp; let i = index"
+            class="input-group mb-3"
+          >
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="contatosTemp[i]"
+            />
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="removerContato(i)"
+            >
+              Remover
+            </button>
+          </div>
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="adicionarContato()"
+          >
+            Adicionar Contato
+          </button>
+        </div>
+      </div>
+      <div class="group-modal">
+        <label class="label-form" for="select_supervisor" class="label"
+          >Selecione as areas:</label
+        >
+        <div *ngFor="let area of areas">
+          <label>
+            <input
+              type="checkbox"
+              (change)="toggleAreaSelection(area)"
+              [checked]="areaSelected.includes(area)"
+            />
+            {{ area.nomeArea }}
+          </label>
+        </div>
       </div>
       <div class="group-modal">
         <label class="label-form" for="select_supervisor" class="label"
           >Supervisor:</label
         >
-        <select
-          name="select_supervisor"
-          class="form-control"
-          [(ngModel)]="equipamento.supervisorList"
-        >
-          <option
-            *ngFor="let supervisor of supervisores"
-            [ngValue]="supervisor"
-          >
+        <div *ngFor="let supervisor of supervisores">
+          <label>
+            <input
+              type="checkbox"
+              (change)="toggleSupervisorSelection(supervisor)"
+              [checked]="supervisorSelected.includes(supervisor)"
+            />
             {{ supervisor.nomeSupervisor }}
-          </option>
-        </select>
+          </label>
+        </div>
       </div>
       <div class="group-modal">
         <label for="descricao">Descrição:</label>

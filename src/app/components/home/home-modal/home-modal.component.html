@@ -6,7 +6,7 @@
     <div class="form-group">
       <div class="group-modal">
         <label class="label-form" for="select_equipamento" class="label">
-          Nome do Equipamento:
+          Selecione o Equipamento:
         </label>
         <select
           name="select_equipamento"
@@ -32,8 +32,25 @@
         />
       </div>
       <div class="group-modal">
+        <label class="label-form" for="select_equipamento" class="label">
+          Selecione a Instituição:
+        </label>
+        <select
+          name="select_equipamento"
+          class="label estilo"
+          [(ngModel)]="solicitacao.instituicaoDeEnsino"
+        >
+          <option
+            *ngFor="let instituicao of instituicoes"
+            [ngValue]="instituicao"
+          >
+            {{ instituicao.nomeIe }}
+          </option>
+        </select>
+      </div>
+      <div class="group-modal">
         <label class="label-form" for="select_area" class="label">
-          Nome da Área:
+          Selecione a Área:
         </label>
         <select
           name="select_area"
@@ -47,7 +64,7 @@
       </div>
       <div class="group-modal">
         <label class="label-form" for="select_supervisor" class="label">
-          Nome do Supervisor:
+          Selecione o Supervisor:
         </label>
         <select
           name="select_supervisor"
@@ -63,15 +80,18 @@
         </select>
       </div>
       <div class="group-modal">
-        <label class="label-form" for="select_situacao" class="label">
-          Situação:
-        </label>
-        <select
-          name="select_situacao"
-          class="label estilo"
-          [(ngModel)]="situacaoSelected"
+        <label class="label-form" for="select_area" class="label"
+          >Qual a situação:</label
         >
-          <option *ngFor="let situacao of situacoes" [ngValue]="situacao">
+        <select
+          name="select_area"
+          class="form-control"
+          [(ngModel)]="solicitacao.situacao"
+        >
+          <option
+            *ngFor="let situacao of getSituacaoEnum()"
+            [ngValue]="situacao"
+          >
             {{ situacao }}
           </option>
         </select>
@@ -114,6 +134,16 @@
           type="time"
           name="input_fimExpediente"
           [(ngModel)]="solicitacao.fimExpediente"
+        />
+      </div>
+      <div class="group-modal">
+        <label class="label-form" for="input_qntdEstagiarios" class="label">
+          Descrição:
+        </label>
+        <input
+          type="text"
+          name="input_descricao"
+          [(ngModel)]="solicitacao.descricao"
         />
       </div>
       <div class="modal-footer">
