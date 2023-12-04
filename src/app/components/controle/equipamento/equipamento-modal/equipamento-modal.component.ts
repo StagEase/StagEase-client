@@ -74,7 +74,9 @@ export class EquipamentoModalComponent {
       this.equipamento.areaList = [];
 
     this.equipamento.areaList.push(area);
-    this.modalRef.dismiss();
+    if (this.modalRef) {
+      this.modalRef.dismiss();
+    }
   }
 
   retornoSupervisorList(supervisor: Supervisor) {
@@ -83,7 +85,9 @@ export class EquipamentoModalComponent {
       this.equipamento.supervisorList = [];
 
     this.equipamento.supervisorList.push(supervisor);
-    this.modalRef.dismiss();
+    if (this.modalRef) {
+      this.modalRef.dismiss();
+    }
   }
 
 
