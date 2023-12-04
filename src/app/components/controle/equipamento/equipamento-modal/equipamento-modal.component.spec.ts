@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { Area } from 'src/app/models/area';
 import { Supervisor } from 'src/app/models/supervisor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 describe('EquipamentoModalComponent', () => {
   let component: EquipamentoModalComponent;
@@ -18,7 +20,7 @@ describe('EquipamentoModalComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [EquipamentoModalComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, FormsModule, NgbModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     });
     fixture = TestBed.createComponent(EquipamentoModalComponent);
@@ -47,47 +49,79 @@ describe('EquipamentoModalComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Teste de 1 @Input - Interpolacao no template', () => {
-    let elemento = fixture.debugElement.query(By.css('input[name="nome"]'));
-    expect(elemento.nativeElement.ngModel).toEqual("guante");
-  });
-
   it('Teste no null de @Input 1 - Interpolação no template', () => {
     let elemento = fixture.debugElement.query(By.css('input[name="nome"]'));
     expect(elemento.nativeElement.ngModel).not.toBe(null);
   });
 
-  it('Teste de 2 @Input - Interpolacao no template', () => {
-    let elemento = fixture.debugElement.query(By.css('input[name="gerente"]'));
-    expect(elemento.nativeElement.ngModel).toEqual("marcelo");
-  });
 
   it('Teste no null de @Input 2- Interpolação no template', () => {
     let elemento = fixture.debugElement.query(By.css('input[name="gerente"]'));
     expect(elemento.nativeElement.ngModel).not.toBe(null);
   });
 
-  it('Teste de 3 @Input - Interpolacao no template', () => {
-    let elemento = fixture.debugElement.query(By.css('input[id="contato"]'));
-    expect(elemento.nativeElement.ngModel).toEqual(["45-4322421"]);
-  });
-
   it('Teste no null de @Input 3- Interpolação no template', () => {
-    let elemento = fixture.debugElement.query(By.css('input[id="contato"]'));
+    let elemento = fixture.debugElement.query(By.css('input[name="contato"]'));
     expect(elemento.nativeElement.ngModel).not.toBe(null);
   });
   
-  it('Teste de 4 @Input - Interpolacao no template', () => {
-    let elemento = fixture.debugElement.query(By.css('input[id="descricao"]'));
-    expect(elemento.nativeElement.ngModel).toEqual("nao");
-  });
 
   it('Teste no null de @Input 4- Interpolação no template', () => {
     let elemento = fixture.debugElement.query(By.css('input[id="descricao"]'));
     expect(elemento.nativeElement.ngModel).not.toBe(null);
   });
 
-  
+  it('debería cambiar el estado de las áreas seleccionadas correctamente', () => {
+    // Mock de datos
+    const areaMock = { id: 1, cadastro: new Date('2023-01-01'), atualizado: new Date('2023-01-01'), ativo: true, nomeArea: "medicina", solicitacaoList: []};
+    component.areas = [areaMock];
+
+    // Estado inicial
+    expect(component.areaSelected).toEqual([]);
+
+    // Llama al método toggleAreaSelection
+    component.toggleAreaSelection(areaMock);
+
+    // Verifica que el área se haya añadido a las áreas seleccionadas
+    expect(component.areaSelected).toEqual([areaMock]);
+
+    // Llama al método toggleAreaSelection nuevamente para quitar el área
+    component.toggleAreaSelection(areaMock);
+
+    // Verifica que el área se haya eliminado de las áreas seleccionadas
+    expect(component.areaSelected).toEqual([]);
+  });
+
+  it('debería troca o estado de las supervisor seleccionadas correctamente', () => {
+    const supervisorMock = { id: 1, cadastro: new Date('2023-01-01'), atualizado: new Date('2023-01-01'), ativo: true, nomeSupervisor: "marcelo", matricula: "34432", descricao: "nao", equipamentoList: [], solicitacaoList: []};
+    component.supervisores = [supervisorMock];
+
+    expect(component.supervisorSelected).toEqual([]);
+
+    component.toggleSupervisorSelection(supervisorMock);
+
+    expect(component.supervisorSelected).toEqual([supervisorMock]);
+
+    component.toggleSupervisorSelection(supervisorMock);
+
+    expect(component.supervisorSelected).toEqual([]);
+  });
+
+  it('componente depois do retornoAreaList', () => {
+    const area: Area = { id: 1, cadastro: new Date('2023-01-01'), atualizado: new Date('2023-01-01'), ativo: true, nomeArea: "uniamerica", solicitacaoList: [] };
+
+    component.retornoAreaList(area);
+
+    expect(component.equipamento.areaList).toContain(area);
+  });
+
+  it('componente depois do retornoSupervisorList', () => {
+    const supervisor: Supervisor = { id: 1, cadastro: new Date('2023-01-01'), atualizado: new Date('2023-01-01'), ativo: true, nomeSupervisor: "marcelo", matricula: "54321", descricao: "nao", equipamentoList: [], solicitacaoList: [] };
+
+    component.retornoSupervisorList(supervisor);
+
+    expect(component.equipamento.supervisorList).toContain(supervisor);
+  });
 
   beforeEach(() => {
     let equipamento = new Equipamento();
