@@ -1,6 +1,6 @@
 export enum Situacao {
-  LIBERADO = 'Liberado',
-  PENDENTE = 'Pendente',
-  NEGADO = 'Negado',
-  CONCLUIDO = 'Concluido',
+  LIBERADO,
+  PENDENTE,
+  NEGADO,
+  CONCLUIDO,
 }

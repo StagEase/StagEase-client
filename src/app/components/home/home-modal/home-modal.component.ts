@@ -22,8 +22,6 @@ export class HomeModalComponent {
   areas: Area[] = [];
   supervisores: Supervisor[] = [];
   instituicoes: InstituicaoDeEnsino[] = [];
-  situacoes = Object.values(Situacao);
-  situacaoSelected!: Situacao;
 
   //instanciando as services
   equipamentoService = inject(EquipamentoService);
@@ -39,18 +37,6 @@ export class HomeModalComponent {
     this.getAreas();
     this.getSupervisores();
     this.getInstituicoes();
-  }
-
-  save() {
-    this.solicitacaoService
-      .create(this.solicitacao)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    // location.reload();
   }
 
   getEquipamentos() {
@@ -93,5 +79,23 @@ export class HomeModalComponent {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  getSituacaoEnum(): string[] {
+    return Object.values(Situacao).filter(
+      (value) => typeof value === 'string'
+    ) as string[];
+  }
+
+  save() {
+    this.solicitacaoService
+      .create(this.solicitacao)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // location.reload();
   }
 }

@@ -25,6 +25,7 @@ export class HomeComponent {
       .list()
       .then((response) => {
         this.solicitacaoList = response.data;
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -40,7 +41,7 @@ export class HomeComponent {
     } else if (situacaoString === 'NEGADO') {
       return 'red';
     } else if (situacaoString === 'CONCLUIDO') {
-      return 'white';
+      return 'blue';
     } else {
       return 'black';
     }
