@@ -22,6 +22,8 @@ import { EquipamentoModalComponent } from './components/controle/equipamento/equ
 import { HomeModalComponent } from './components/home/home-modal/home-modal.component';
 import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -49,8 +51,11 @@ import { FooterComponent } from './components/layout/footer/footer.component';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [AxiosService],
+  providers: [
+    AxiosService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

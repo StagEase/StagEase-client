@@ -22,14 +22,7 @@
           [(ngModel)]="equipamento.gerente"
         />
       </div>
-      <div class="group-modal">
-        <label for="distrito">Distrito:</label>
-        <select class="form-control" [(ngModel)]="equipamento.distrito">
-          <option *ngFor="let distrito of distritoValues" [ngValue]="distrito">
-            {{ distrito }}
-          </option>
-        </select>
-      </div>
+      
       <div class="group-modal">
         <label for="contato">Contato:</label>
         <input
@@ -46,7 +39,7 @@
           class="form-control"
           [(ngModel)]="equipamento.areaList"
         >
-          <option *ngFor="let area of areas" [ngValue]="area.id">
+          <option *ngFor="let area of areas" [ngValue]="area">
             {{ area.nomeArea }}
           </option>
         </select>
@@ -62,7 +55,7 @@
         >
           <option
             *ngFor="let supervisor of supervisores"
-            [ngValue]="supervisor.id"
+            [ngValue]="supervisor"
           >
             {{ supervisor.nomeSupervisor }}
           </option>
