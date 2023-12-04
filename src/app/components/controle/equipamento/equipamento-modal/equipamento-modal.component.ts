@@ -104,35 +104,4 @@ export class EquipamentoModalComponent {
       });
     this.equipamento.contatoList = [];
   }
-<<<<<<< HEAD
-
-  retornoAreaList(area: Area) {
-    if (this.equipamento.areaList == null)
-      this.equipamento.areaList = [];
-
-    this.equipamento.areaList.push(area);
-    if (this.modalRef) {
-      this.modalRef.dismiss();
-    }
-  }
-
-  retornoSupervisorList(supervisor: Supervisor) {
-
-    if (this.equipamento.supervisorList == null)
-      this.equipamento.supervisorList = [];
-
-    this.equipamento.supervisorList.push(supervisor);
-    if (this.modalRef) {
-      this.modalRef.dismiss();
-    }
-  }
-
-
-  lancar(modal: any) {
-    this.modalRef = this.modalService.open(modal, { size: 'lg' });
-  }
-
 }
-=======
-}
->>>>>>> bd1e81b6a2fee85ef93a9920159755539248b054

@@ -87,21 +87,7 @@ describe('EquipamentoModalComponent', () => {
     expect(elemento.nativeElement.ngModel).not.toBe(null);
   });
 
-  it('componente depois do retornoAreaList', () => {
-    const area: Area = { id: 1, cadastro: new Date('2023-01-01'), atualizado: new Date('2023-01-01'), ativo: true, nomeArea: "uniamerica", solicitacaoList: [] };
-
-    component.retornoAreaList(area);
-
-    expect(component.equipamento.areaList).toContain(area);
-  });
-
-  it('componente depois do retornoSupervisorList', () => {
-    const supervisor: Supervisor = { id: 1, cadastro: new Date('2023-01-01'), atualizado: new Date('2023-01-01'), ativo: true, nomeSupervisor: "marcelo", matricula: "54321", descricao: "nao", equipamentoList: [], solicitacaoList: [] };
-
-    component.retornoSupervisorList(supervisor);
-
-    expect(component.equipamento.supervisorList).toContain(supervisor);
-  });
+  
 
   beforeEach(() => {
     let equipamento = new Equipamento();
