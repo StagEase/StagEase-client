@@ -6,29 +6,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0d6efd;
+  background-color: #007db0;
 
   .container-right {
-    width: 50vw;
+    width: 25vw;
     height: 60vh;
     border-radius: 2%;
-    background-color: #ffff;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     .content {
-      width: 60%;
-      flex-direction: column;
-      gap: 80px;
-      font-size: 20px;
+      // width: 60%;
+      // flex-direction: column;
+      // gap: 80px;
+      // font-size: 20px;
       .title-content {
         font-family: "NexaSlab";
 
         display: flex;
-        flex-direction: row;
-        gap: 24px;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         margin-bottom: 34px;
@@ -45,190 +44,101 @@
           width: 6rem;
         }
       }
+      .content-text {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
       .form {
         display: flex;
-        flex-direction: column;
-        gap: 40px;
-        .error-message1 {
-          font-family: "Public Sans", sans-serif;
-          font-size: 20px;
-          color: #0d6efd;
-        }
-        .login-info {
-          display: flex;
-          flex-direction: column;
-          font-family: "Public Sans", sans-serif;
-          position: relative;
-          p {
-            margin-bottom: 8px;
-          }
-          input {
-            padding: 16px;
-            border: none;
-            outline: none;
-            border-radius: 15px;
-            background-color: #e7e7e7;
-            box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
-            transition: 300ms ease-in-out;
-            font-size: 16px;
-            .input:focus {
-              background-color: white;
-              transform: scale(1.05);
-              box-shadow: 13px 13px 100px #f2f8f9, -13px -13px 100px #ffffff;
-            }
-          }
-          .icon-password {
-            font-size: 24px;
-          }
-
-          .show-password {
-            position: absolute;
-            top: 52%;
-            right: 12px;
-            border: none;
-            cursor: pointer;
-            background: none;
-          }
-        }
-        .error-message {
-          font-size: 12px;
-          color: #d10000;
-          display: flex;
-          justify-content: start;
-        }
-      }
-      .login {
-        display: flex;
-        flex-direction: column;
-        font-family: "Public Sans", sans-serif;
         align-items: center;
-        margin-top: 34px;
-        a {
-          color: #0d6efd;
-        }
-        button {
+        flex-direction: column;
+        gap: 26px;
+        .wave-group {
           position: relative;
-          display: inline-block;
-          cursor: pointer;
-          outline: none;
-          border: 0;
-          vertical-align: middle;
-          text-decoration: none;
+        }
+
+        .wave-group .input {
+          font-size: 16px;
+          padding: 10px 10px 10px 5px;
+          display: block;
+          width: 200px;
+          border: none;
+          border-bottom: 1px solid #515151;
           background: transparent;
-          padding: 0;
-          font-size: inherit;
-          font-family: inherit;
         }
 
-        button.learn-more {
-          width: 24rem;
-          height: auto;
+        .wave-group .input:focus {
+          outline: none;
         }
 
-        button.learn-more .circle {
-          transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        .wave-group .label {
+          color: #999;
+          font-size: 18px;
+          font-weight: normal;
+          position: absolute;
+          pointer-events: none;
+          left: 5px;
+          top: 10px;
+          display: flex;
+        }
+
+        .wave-group .label-char {
+          transition: 0.2s ease all;
+          transition-delay: calc(var(--index) * 0.05s);
+        }
+
+        .wave-group .input:focus ~ label .label-char,
+        .wave-group .input:valid ~ label .label-char {
+          transform: translateY(-20px);
+          font-size: 14px;
+          color: #5264ae;
+        }
+
+        .wave-group .bar {
           position: relative;
           display: block;
-          margin: 0;
-          width: 3rem;
-          height: 3rem;
-          background: #0d6efd;
-          border-radius: 1.625rem;
+          width: 200px;
         }
 
-        button.learn-more .circle .icon {
-          transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          margin: auto;
-          background: #fff;
-        }
-
-        button.learn-more .circle .icon.arrow {
-          transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-          left: 0.625rem;
-          width: 1.125rem;
-          height: 0.125rem;
-          background: none;
-        }
-
-        button.learn-more .circle .icon.arrow::before {
-          position: absolute;
+        .wave-group .bar:before,
+        .wave-group .bar:after {
           content: "";
-          top: -0.29rem;
-          right: 0.0625rem;
-          width: 0.625rem;
-          height: 0.625rem;
-          border-top: 0.125rem solid #fff;
-          border-right: 0.125rem solid #fff;
-          transform: rotate(45deg);
-        }
-
-        button.learn-more .button-text {
-          transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+          height: 2px;
+          width: 0;
+          bottom: 1px;
           position: absolute;
-          top: -4px;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          padding: 0.75rem 0;
-          margin: 0 0 0 1.85rem;
-          color: #0d6efd;
-          font-weight: 700;
-          line-height: 1.6;
-          text-align: center;
-          text-transform: uppercase;
+          background: #5264ae;
+          transition: 0.2s ease all;
+          -moz-transition: 0.2s ease all;
+          -webkit-transition: 0.2s ease all;
         }
 
-        button:hover .circle {
-          width: 100%;
+        .wave-group .bar:before {
+          left: 50%;
         }
 
-        button:hover .circle .icon.arrow {
-          background: #fff;
-          transform: translate(1rem, 0);
+        .wave-group .bar:after {
+          right: 50%;
         }
 
-        button:hover .button-text {
-          color: #fff;
+        .wave-group .input:focus ~ .bar:before,
+        .wave-group .input:focus ~ .bar:after {
+          width: 50%;
         }
-        .register {
-          padding-top: 16px;
-          font-size: 16px;
+        .login {
+          background: #007db0;
+          color: white;
+          border: none;
+          width: 110px;
+          height: 44px;
+          border-radius: 25px;
+          cursor: pointer;
+        }
+        .login:hover {
+          background: #0d6efd;
         }
       }
-    }
-  }
-  .loading-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-
-    .loading-spinner {
-      width: 50px;
-      height: 50px;
-      border: 6px solid #0d6efd;
-      border-top: 6px solid transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      z-index: 2;
-    }
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
     }
   }
 }

@@ -14,33 +14,36 @@
       </div>
 
       <div class="form">
-        <div class="login-info">
-          <p>Informe o seu Login</p>
-          <input
-            class="input"
-            type="text"
-            placeholder="Informa pra gente seu Login"
-          />
+        <div class="wave-group">
+          <input class="input" type="text" required="" />
+          <span class="bar"></span>
+          <label class="label">
+            <span style="--index: 0" class="label-char">U</span>
+            <span style="--index: 1" class="label-char">s</span>
+            <span style="--index: 2" class="label-char">u</span>
+            <span style="--index: 3" class="label-char">a</span>
+            <span style="--index: 3" class="label-char">r</span>
+            <span style="--index: 3" class="label-char">i</span>
+            <span style="--index: 3" class="label-char">o</span>
+          </label>
         </div>
 
-        <div class="login-info">
-          <p>Informe a sua senha</p>
-          <input
-            class="input"
-            id="password"
-            placeholder="Informa pra gente a sua senha"
-            type="password"
-          />
-          <button class="show-password"></button>
+        <div class="wave-group">
+          <input class="input" type="text" required="" />
+          <span class="bar"></span>
+          <label class="label">
+            <span style="--index: 0" class="label-char">S</span>
+            <span style="--index: 1" class="label-char">e</span>
+            <span style="--index: 2" class="label-char">n</span>
+            <span style="--index: 3" class="label-char">h</span>
+            <span style="--index: 3" class="label-char">a</span>
+          </label>
+        </div>
 
-          <div class="login">
-            <button class="learn-more" routerLink="/home">
-              <span class="circle" aria-hidden="true">
-                <span class="icon arrow"></span>
-              </span>
-              <span class="button-text">Acessar</span>
-            </button>
-          </div>
+        <div class="login">
+          <button class="login" routerLink="/home">
+            <span class="button-text">Acessar</span>
+          </button>
         </div>
       </div>
     </div>
