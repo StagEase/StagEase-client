@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  webserver-primary:
+    image: nginx:alpine
+    container_name: stagease-nginx-primary
+    restart: unless-stopped
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./dist/stagease-client:/usr/share/nginx/html
+    networks:
+      - stagease-network
+
+  webserver-failover:
+    image: nginx:alpine
+    container_name: stagease-nginx-failover
+    restart: unless-stopped
+    ports:
+      - "444:443" # Porta diferente para evitar conflito com o contêiner principal
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./dist/stagease-client:/usr/share/nginx/html
+    networks:
+      - stagease-network
+    depends_on:
+      - webserver-primary
+    healthcheck:
+      test: ["CMD", "curl", "-f", "https://webserver-primary:443"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  stagease-network:
+    driver: bridge
