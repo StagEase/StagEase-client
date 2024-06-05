@@ -6,7 +6,7 @@ import axios from 'axios';
 })
 export class AxiosService {
   axiosInstance = axios.create({
-    baseURL: '/api',
+    baseURL: 'http://localhost:8080',
     headers: {
       'Content-Type': 'application/json',
     },
