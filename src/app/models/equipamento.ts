@@ -9,8 +9,7 @@ export class Equipamento extends Abstract {
   gerente!: String;
   distrito!: Distrito;
   contatoList!: String[];
-  areaList!: Area[];
   supervisorList!: Supervisor[];
-  solicitacaoList!: Solicitacao[];
+  areaList!: Area[];
   descricao!: String;
 }

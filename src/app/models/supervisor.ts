@@ -6,6 +6,4 @@ export class Supervisor extends Abstract {
   nomeSupervisor!: String;
   matricula!: String;
   descricao!: String;
-  equipamentoList!: Equipamento[];
-  solicitacaoList!: Solicitacao[];
 }
