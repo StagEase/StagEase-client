@@ -24,7 +24,6 @@ import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,9 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [
-    AxiosService,
-  ],
+  providers: [AxiosService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
