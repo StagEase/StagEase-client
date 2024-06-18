@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,9 +20,10 @@ import { InstituicaoModalComponent } from './components/controle/instituicao/ins
 import { SupervisorModalComponent } from './components/controle/supervisor/supervisor-modal/supervisor-modal.component';
 import { EquipamentoModalComponent } from './components/controle/equipamento/equipamento-modal/equipamento-modal.component';
 import { HomeModalComponent } from './components/home/home-modal/home-modal.component';
-import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { initializeKeycloak } from './utility/app.init';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,6 @@ import { HttpClientModule } from '@angular/common/http';
     SupervisorModalComponent,
     EquipamentoModalComponent,
     HomeModalComponent,
-    LoginComponent,
     FooterComponent,
   ],
   imports: [
@@ -51,8 +51,17 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    KeycloakAngularModule,
   ],
-  providers: [AxiosService],
+  providers: [
+    AxiosService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

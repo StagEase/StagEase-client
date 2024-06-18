@@ -6,15 +6,11 @@ import { SupervisorComponent } from './components/controle/supervisor/supervisor
 import { InstituicaoComponent } from './components/controle/instituicao/instituicao.component';
 import { EquipamentoComponent } from './components/controle/equipamento/equipamento.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './utility/app.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
-  },
-  {
-    path: 'home',
     component: IndexComponent,
     children: [
       { path: '', component: HomeComponent },
@@ -23,6 +19,7 @@ const routes: Routes = [
       { path: 'equipamento', component: EquipamentoComponent },
       { path: 'instituicao', component: InstituicaoComponent },
     ],
+    canActivate: [AuthGuard],
   },
 ];
 

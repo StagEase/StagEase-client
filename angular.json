@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "stagease-client:build:production"
+              "buildTarget": "stagease-client:build:production"
             },
             "development": {
-              "browserTarget": "stagease-client:build:development"
+              "buildTarget": "stagease-client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "stagease-client:build"
+            "buildTarget": "stagease-client:build"
           }
         },
         "test": {
