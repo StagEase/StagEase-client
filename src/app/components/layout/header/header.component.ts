@@ -13,6 +13,7 @@ export class HeaderComponent {
     try {
       // Chama o método de logout do KeycloakService
       await this.keycloakService.logout();
+      localStorage.setItem('jwt_token', '');
       // URL de redirecionamento após o logout
     } catch (error) {
       console.error('Erro ao realizar logout', error);

@@ -1,23 +1,38 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SolicitacaoService } from './../../services/solicitacao.service';
 import { Solicitacao } from './../../models/solicitacao';
 import { Situacao } from 'src/app/models/enums/situacao';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   solicitacaoList: Solicitacao[] = [];
   solicitacaoSelecionada: Solicitacao = new Solicitacao();
 
   modal = inject(NgbModal);
   service = inject(SolicitacaoService);
 
-  constructor() {
+  constructor(private keycloakService: KeycloakService) {
     this.listAll();
+  }
+
+  ngOnInit(): void {
+    this.saveToken();
+  }
+
+  async saveToken() {
+    try {
+      const token = await this.keycloakService.getToken();
+      console.log('Token JWT:', token);
+      localStorage.setItem('token', token);
+    } catch (error) {
+      console.error('Erro ao obter o token JWT:', error);
+    }
   }
 
   listAll() {
